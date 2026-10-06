@@ -1,0 +1,7685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Mis XV Años · Arleth</title>
+<link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1N6ZMi1XiEERdGQ0EkjauCqioYLrN4bN-&sz=w800">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --navy-1: #050b24;
+    --navy-2: #080f3d;
+    --navy-3: #142c5a;
+    --blue: #1b406a;
+    --blue-light: #346188;
+
+    --lavender: #848cbb;
+    --lavender-light: #9593c2;
+
+    --cream: #f8f0dd;
+
+    --gold: #c9a96a;
+    --gold-light: #e4cc91;
+    --gold-dark: #8e7038;
+
+    --white-soft: rgba(255,255,255,.82);
+
+    --serif: "Cormorant Garamond", serif;
+    --sans: "Montserrat", sans-serif;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 0;
+    overflow-x: hidden;
+
+    background: var(--navy-1);
+    color: var(--cream);
+
+    font-family: var(--sans);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--navy-1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dark);
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   ENVELOPE SCREEN
+========================================================= */
+
+.envelope-screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(83,121,160,.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #050a20,
+            #081332 60%,
+            #050a20
+        );
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+.envelope-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* estrellas del sobre */
+
+.envelope-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(228,204,145,.55) 1px, transparent 1.5px);
+
+    background-size:
+        95px 95px,
+        150px 150px;
+
+    background-position:
+        10px 20px,
+        50px 80px;
+
+    opacity: .35;
+
+    pointer-events: none;
+}
+
+
+.envelope-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(88vw, 430px);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ESTRELLAS CON DESTELLO
+========================================================= */
+
+.sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sparkles span {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff8dc;
+    box-shadow:
+        0 0 5px rgba(255,255,255,.95),
+        0 0 14px rgba(228,204,145,.85);
+    opacity: .25;
+    animation: starTwinkle 2.8s ease-in-out infinite;
+}
+
+.sparkles span::before,
+.sparkles span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(255,245,205,.9);
+    transform: translate(-50%,-50%);
+    border-radius: 999px;
+}
+
+.sparkles span::before { width: 1px; height: 22px; }
+.sparkles span::after { width: 22px; height: 1px; }
+
+.sparkles span:nth-child(1){left:12%;top:18%;animation-delay:.2s;transform:scale(.7)}
+.sparkles span:nth-child(2){left:82%;top:22%;animation-delay:1.1s;transform:scale(1.1)}
+.sparkles span:nth-child(3){left:20%;top:72%;animation-delay:1.8s;transform:scale(.55)}
+.sparkles span:nth-child(4){left:88%;top:70%;animation-delay:.7s;transform:scale(.8)}
+.sparkles span:nth-child(5){left:47%;top:12%;animation-delay:2.1s;transform:scale(.55)}
+.sparkles span:nth-child(6){left:67%;top:84%;animation-delay:1.45s;transform:scale(.65)}
+
+@keyframes starTwinkle {
+    0%,100% { opacity:.15; filter:brightness(1); }
+    45% { opacity:1; filter:brightness(1.8); }
+    55% { opacity:.55; filter:brightness(1.2); }
+}
+
+.sparkles-cover { z-index: 2; }
+.cover-content, .cover-frame, .cover-butterfly, .cover-sun { position: relative; z-index: 6; }
+.cover-frame { z-index: 10; }
+.cover-butterfly, .cover-sun { z-index: 6; }
+
+/* =========================================================
+   SOBRE: CARTA COMPLETA Y OCULTA HASTA ABRIR
+========================================================= */
+
+.envelope-area {
+    perspective: 1200px;
+}
+
+.envelope {
+    overflow: visible;
+}
+
+.letter {
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(18px) scale(.98);
+    transition:
+        transform 1.25s cubic-bezier(.2,.8,.18,1),
+        opacity .35s ease,
+        visibility 0s linear 1.25s;
+}
+
+.envelope-screen.opening .letter {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-115%) scale(1);
+    transition:
+        transform 2.5s .35s cubic-bezier(.8,.8,.2,1),
+        opacity .3s ease .43s,
+        visibility 0s;
+}
+
+/* La solapa se abre antes de que la carta salga */
+.envelope-screen.opening .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-screen.opening .envelope-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.5);
+}
+
+/* La parte frontal permanece debajo de la carta */
+.envelope-bottom {
+    z-index: 3;
+}
+
+/* texto superior */
+
+.envelope-small {
+    margin-bottom: 12px;
+
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+}
+
+
+/* texto principal */
+
+.envelope-title {
+    margin-bottom: 28px;
+
+    font-family: var(--serif);
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+
+    color: var(--cream);
+}
+
+
+/* zona sobre */
+
+.envelope-area {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    margin: 0 auto;
+
+    cursor: pointer;
+}
+
+
+/* sobre */
+
+.envelope {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1.55;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #173762,
+            #0b2145 55%,
+            #081733
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.5),
+        0 0 30px rgba(201,169,106,.08);
+
+    overflow: hidden;
+
+    border: 1px solid rgba(228,204,145,.45);
+}
+
+
+/* borde interno */
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+    inset: 10px;
+
+    border: 1px solid rgba(228,204,145,.35);
+
+    pointer-events: none;
+
+    z-index: 8;
+}
+
+
+/* parte inferior */
+
+.envelope-bottom {
+    position: absolute;
+    inset: auto 0 0 0;
+
+    height: 72%;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 49.5%,
+            rgba(201,169,106,.35) 50%,
+            transparent 50.5%
+        ),
+        linear-gradient(
+            225deg,
+            transparent 49.5%,
+            rgba(201,169,106,.35) 50%,
+            transparent 50.5%
+        );
+
+    z-index: 3;
+}
+
+
+/* carta */
+
+.letter {
+    position: absolute;
+
+    left: 9%;
+    bottom: 8%;
+
+    width: 82%;
+    height: 78%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffdf6,
+            #f5edda
+        );
+
+    border: 1px solid rgba(142,112,56,.35);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+
+    z-index: 2;
+
+    transition:
+        transform 1s cubic-bezier(.2,.75,.2,1),
+        bottom 1s ease;
+}
+
+
+/* papel interno */
+
+.letter::before {
+    content: "";
+
+    position: absolute;
+    inset: 10px;
+
+    border: 1px solid rgba(142,112,56,.35);
+}
+
+
+/* texto carta */
+
+.letter-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    color: var(--navy-2);
+
+    font-family: var(--serif);
+}
+
+.letter-content span {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+
+    color: var(--gold-dark);
+
+    margin-bottom: 8px;
+}
+
+.letter-content strong {
+    font-size: 2rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
+
+/* sol/sello del sobre */
+
+.envelope-seal {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #f0dca3,
+            #c9a96a
+        );
+
+    border: 3px solid rgba(255,255,255,.25);
+
+    color: var(--navy-2);
+
+    font-family: var(--serif);
+    font-size: 30px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.3),
+        0 0 25px rgba(228,204,145,.15);
+
+    z-index: 10;
+
+    transition:
+        transform .8s ease,
+        opacity .5s ease;
+}
+
+
+/* solapa */
+
+.envelope-flap {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 62%;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    background:
+        linear-gradient(
+            180deg,
+            #21466f,
+            #112c52
+        );
+
+    border-bottom: 1px solid rgba(228,204,145,.25);
+
+    z-index: 2;
+
+    transform-origin: top;
+
+    transition:
+        transform 1.1s cubic-bezier(.2,.75,.2,1);
+}
+
+
+/* sobre abierto */
+
+.envelope-screen.opening .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-screen.opening .envelope-seal {
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(.5);
+}
+
+
+
+
+/* indicación */
+
+.envelope-hint {
+    margin-top: 24px;
+
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.6);
+
+    animation: hintPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%,100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.cover {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(53,87,128,.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(201,169,106,.10),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #050b24 0%,
+            #081332 50%,
+            #050d25 100%
+        );
+}
+
+
+/* textura de estrellas */
+
+.cover::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.7) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        92px 92px,
+        145px 145px;
+
+    background-position:
+        8px 20px,
+        40px 70px;
+
+    opacity: .35;
+
+    pointer-events: none;
+}
+
+
+/* pequeñas luces */
+
+.cover::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(255,255,255,.20),
+            transparent 2%
+        ),
+        radial-gradient(
+            circle at 82% 36%,
+            rgba(228,204,145,.25),
+            transparent 3%
+        ),
+        radial-gradient(
+            circle at 70% 76%,
+            rgba(255,255,255,.15),
+            transparent 2%
+        ),
+        radial-gradient(
+            circle at 22% 80%,
+            rgba(228,204,145,.18),
+            transparent 3%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MARCO
+========================================================= */
+
+.cover-frame {
+    position: absolute;
+
+    inset: 28px;
+
+    border:
+        2px solid
+        rgba(228,204,145,.88);
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(201,169,106,.15);
+}
+
+
+.cover-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(201,169,106,.30);
+}
+
+
+/* =========================================================
+   CONTENIDO PORTADA
+========================================================= */
+
+.cover-content {
+    position: relative;
+
+    z-index: 6;
+
+    width: min(90%, 900px);
+
+    min-height: 100svh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        70px 30px
+        80px;
+}
+
+
+/* =========================================================
+   SOL
+========================================================= */
+
+.cover-sun {
+    width: clamp(
+        115px,
+        23vw,
+        205px
+    );
+    position: absolute;
+    top: 100px;
+    height: auto;
+
+    margin-bottom: 22px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,210,80,.35)
+        )
+        drop-shadow(
+            0 0 30px
+            rgba(255,190,50,.14)
+        );
+
+
+}
+
+.cover-sun.up {
+        animation:
+        sunAppear 6s ease both,
+        sunRotate 20s linear infinite 6s;
+}
+
+@keyframes sunAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(100px)
+            scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes sunRotate {
+    from {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    to {
+        transform: translateY(0) scale(1) rotate(360deg);
+    }
+}
+
+/* =========================================================
+   MIS XV
+========================================================= */
+
+.cover-kicker {
+    margin-bottom: 18px;
+
+    font-family: var(--sans);
+
+    font-size:
+        clamp(
+            .65rem,
+            2vw,
+            .9rem
+        );
+
+    font-weight: 400;
+
+    letter-spacing:
+        clamp(
+            .32em,
+            1.3vw,
+            .55em
+        );
+
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+
+    animation:
+        textAppear 1s .25s ease both;
+}
+
+
+/* =========================================================
+   NOMBRE
+========================================================= */
+
+.cover-name {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            4rem,
+            14vw,
+            9rem
+        );
+
+    line-height: .82;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    letter-spacing: -.045em;
+
+    color:
+        #f4dfa5;
+
+    text-shadow:
+        0 2px 10px
+        rgba(228,204,145,.22),
+
+        0 0 35px
+        rgba(228,204,145,.10);
+
+    animation:
+        nameAppear 1.2s .45s cubic-bezier(.2,.8,.2,1) both;
+}
+
+
+@keyframes nameAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   FRASE
+========================================================= */
+
+.cover-subtitle {
+    margin-top: 28px;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            1.2rem,
+            3vw,
+            1.8rem
+        );
+
+    font-style: italic;
+
+    color:
+        rgba(248,240,221,.92);
+
+    animation:
+        textAppear 1s .7s ease both;
+}
+
+
+/* =========================================================
+   SEPARADOR
+========================================================= */
+
+.cover-ornament {
+    width:
+        min(
+            440px,
+            65vw
+        );
+
+    height: 28px;
+
+    margin:
+        28px auto
+        22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gold-light);
+}
+
+
+.cover-ornament::before,
+.cover-ornament::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(228,204,145,.8)
+        );
+}
+
+
+.cover-ornament::after {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(228,204,145,.8),
+            transparent
+        );
+}
+
+
+.ornament-center {
+    position: relative;
+
+    width: 95px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+}
+
+
+.ornament-center span {
+    width: 6px;
+    height: 6px;
+
+    transform: rotate(45deg);
+
+    background:
+        var(--gold-light);
+
+    box-shadow:
+        0 0 7px
+        rgba(228,204,145,.5);
+}
+
+
+.ornament-center span:nth-child(2) {
+    width: 10px;
+    height: 10px;
+}
+
+
+/* =========================================================
+   FECHA
+========================================================= */
+
+.cover-date {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    color: var(--cream);
+
+    font-family: var(--sans);
+
+    font-size:
+        clamp(
+            .75rem,
+            2vw,
+            1rem
+        );
+
+    letter-spacing:
+        clamp(
+            .18em,
+            .8vw,
+            .35em
+        );
+
+    text-transform: uppercase;
+
+    animation:
+        textAppear 1s .9s ease both;
+}
+
+
+.cover-date-line {
+    width: clamp(35px, 8vw, 90px);
+
+    height: 1px;
+
+    background:
+        rgba(228,204,145,.55);
+}
+
+
+/* =========================================================
+   MARIPOSAS
+========================================================= */
+
+.cover-butterfly {
+    position: absolute;
+
+    width:
+        clamp(
+            90px,
+            17vw,
+            175px
+        );
+
+    height: auto;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+.butterfly-gold {
+ left:
+        clamp(
+            40px,
+            7vw,
+            110px
+        );
+
+    bottom:
+        clamp(
+            25px,
+            6vh,
+            90px
+        );
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255,198,75,.45)
+        );
+
+    animation:
+        butterflyFloat 8s ease-in-out infinite,
+        butterflyGlowGold 2.8s ease-in-out infinite;
+        
+}
+
+
+.butterfly-blue {
+    right:
+        clamp(
+            40px,
+            6vw,
+            100px
+        );
+
+    bottom:
+        clamp(
+            5px,
+            2vh,
+            35px
+        );
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(70,180,255,.42)
+        );
+
+    animation:
+        butterflyFloat 10s 1.4s ease-in-out infinite,
+         butterflyGlowBlue 3.4s ease-in-out infinite;
+}
+
+
+@keyframes butterflyFloat {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(-3deg)
+            scale(1);
+    }
+
+    10% {
+        transform:
+            translate(22px, -10px)
+            rotate(2deg)
+            scale(1.015);
+    }
+
+    22% {
+        transform:
+            translate(30px, -22px)
+            rotate(5deg)
+            scale(.99);
+    }
+
+    34% {
+        transform:
+            translate(20px, -34px)
+            rotate(-2deg)
+            scale(1.02);
+    }
+
+    47% {
+        transform:
+            translate(-24px, -25px)
+            rotate(-5deg)
+            scale(.985);
+    }
+
+    59% {
+        transform:
+            translate(-32px, -10px)
+            rotate(-1deg)
+            scale(1.015);
+    }
+
+    72% {
+        transform:
+            translate(-20px, 20px)
+            rotate(4deg)
+            scale(.99);
+    }
+
+    84% {
+        transform:
+            translate(20px, 15px)
+            rotate(1deg)
+            scale(1.02);
+    }
+
+    94% {
+        transform:
+            translate(24px, -8px)
+            rotate(-2deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            rotate(-3deg)
+            scale(1);
+    }
+}
+
+
+
+@keyframes butterflyGlowGold {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 7px
+                rgba(255,198,75,.25)
+            )
+            drop-shadow(
+                0 0 16px
+                rgba(255,198,75,.08)
+            );
+    }
+
+    45% {
+        filter:
+            drop-shadow(
+                0 0 12px
+                rgba(255,210,100,.65)
+            )
+            drop-shadow(
+                0 0 28px
+                rgba(255,198,75,.25)
+            );
+    }
+
+    60% {
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(255,198,75,.20)
+            );
+    }
+}
+
+
+@keyframes butterflyGlowBlue {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 8px
+                rgba(70,180,255,.25)
+            )
+            drop-shadow(
+                0 0 18px
+                rgba(70,180,255,.08)
+            );
+    }
+
+    40% {
+        filter:
+            drop-shadow(
+                0 0 13px
+                rgba(120,210,255,.70)
+            )
+            drop-shadow(
+                0 0 30px
+                rgba(70,180,255,.28)
+            );
+    }
+
+    58% {
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(70,180,255,.18)
+            );
+    }
+}
+
+/* =========================================================
+   RASTRO DE ESTRELLAS · MARIPOSAS
+========================================================= */
+
+.butterfly-trail-star {
+    position: fixed;
+
+    z-index: 5;
+
+    pointer-events: none;
+    user-select: none;
+
+    font-family: var(--serif);
+    font-size: 8px;
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 5px rgba(228,204,145,.9),
+        0 0 12px rgba(228,204,145,.45);
+
+    animation:
+        butterflyTrail 1.15s ease-out forwards;
+}
+
+
+.butterfly-trail-star.blue {
+    color: #a9ddff;
+
+    text-shadow:
+        0 0 5px rgba(120,210,255,.95),
+        0 0 13px rgba(70,180,255,.55);
+}
+
+
+@keyframes butterflyTrail {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 0)
+            scale(.35)
+            rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+        transform:
+            translate(
+                var(--trail-x),
+                var(--trail-y)
+            )
+            scale(1)
+            rotate(15deg);
+    }
+
+    55% {
+        opacity: .8;
+        transform:
+            translate(
+                calc(var(--trail-x) * 1.5),
+                calc(var(--trail-y) * 1.5)
+            )
+            scale(.75)
+            rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(var(--trail-x) * 2),
+                calc(var(--trail-y) * 2)
+            )
+            scale(.1)
+            rotate(90deg);
+    }
+}
+
+/* =========================================================
+   CONTENEDOR GENERAL
+========================================================= */
+
+.section {
+    position: relative;
+
+    padding:
+        100px 22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #07122f,
+            #09183a
+        );
+}
+
+
+.section-inner {
+    width: min(
+        100%,
+        1000px
+    );
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   TITULOS
+========================================================= */
+
+.section-kicker {
+    margin-bottom: 8px;
+
+    font-size: .7rem;
+
+    letter-spacing: .35em;
+
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+
+    text-align: center;
+}
+
+
+.section-title {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            2.4rem,
+            7vw,
+            4.2rem
+        );
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    text-align: center;
+
+    color: var(--cream);
+}
+
+
+.section-line {
+    width: 80px;
+
+    height: 1px;
+
+    margin:
+        22px auto
+        40px;
+
+    background:
+        var(--gold);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+/* =========================================================
+   INTRODUCCIÓN · NUEVO DISEÑO
+========================================================= */
+
+.intro {
+    position: relative;
+    width: min(100%, 760px);
+    margin: 10px auto 0;
+    padding: 55px 65px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.018)
+        );
+
+    border: 1px solid rgba(228,204,145,.42);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.28),
+        inset 0 0 40px rgba(228,204,145,.025);
+
+    backdrop-filter: blur(5px);
+
+    overflow: hidden;
+}
+
+/* Marco interior */
+
+.intro::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+
+    border:
+        1px solid
+        rgba(228,204,145,.16);
+
+    pointer-events: none;
+}
+
+/* Brillo decorativo superior */
+
+.intro::after {
+    content: "✦";
+    position: absolute;
+
+    top: 14px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: var(--serif);
+    font-size: 16px;
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 10px rgba(228,204,145,.65);
+
+    opacity: .9;
+}
+
+
+/* Texto */
+
+.intro p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            1.35rem,
+            3vw,
+            1.75rem
+        );
+
+    line-height: 1.75;
+
+    font-weight: 400;
+
+    color:
+        rgba(248,240,221,.9);
+
+    text-wrap: balance;
+}
+
+
+/* Primera letra decorativa */
+
+.intro p::first-letter {
+    color: var(--gold-light);
+    font-size: 1.45em;
+    font-style: italic;
+}
+
+
+/* Pequeños adornos */
+
+.intro-decoration {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: var(--gold-light);
+
+    transform: rotate(45deg);
+
+    box-shadow:
+        0 0 10px
+        rgba(228,204,145,.7);
+
+    z-index: 2;
+}
+
+.intro-decoration.top-left {
+    top: 22px;
+    left: 22px;
+}
+
+.intro-decoration.top-right {
+    top: 22px;
+    right: 22px;
+}
+
+.intro-decoration.bottom-left {
+    bottom: 22px;
+    left: 22px;
+}
+
+.intro-decoration.bottom-right {
+    bottom: 22px;
+    right: 22px;
+}
+
+
+/* =========================================================
+   DESTELLO DE LA INTRODUCCIÓN
+========================================================= */
+
+.intro-glow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    animation:
+        introGlow 5s ease-in-out infinite;
+}
+
+.intro-glow-left {
+    left: -90px;
+    top: 20%;
+}
+
+.intro-glow-right {
+    right: -90px;
+    bottom: 10%;
+    animation-delay: 2.5s;
+}
+
+@keyframes introGlow {
+
+    0%,100% {
+        opacity: .35;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: .8;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   SECCIÓN FOTO · DISEÑO XV
+========================================================= */
+
+.photo-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brillo ambiental */
+.photo-section::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(228,204,145,.09),
+        transparent 68%
+    );
+    pointer-events: none;
+}
+
+/* Contenedor principal */
+.photo-section .section-inner {
+    position: relative;
+    z-index: 2;
+}
+
+/* Marco de la fotografía */
+.photo-frame {
+    position: relative;
+    width: min(100%, 560px);
+    margin: 35px auto 0;
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(228,204,145,.35),
+            rgba(255,255,255,.04) 35%,
+            rgba(201,169,106,.22)
+        );
+
+    border: 1px solid rgba(228,204,145,.5);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.42),
+        0 0 35px rgba(228,204,145,.08);
+
+    transform: rotate(-1deg);
+    transition:
+        transform .6s ease,
+        box-shadow .6s ease;
+}
+
+/* Marco interior */
+.photo-frame::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(228,204,145,.2);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Esquinas decorativas */
+.photo-corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: 4;
+}
+
+.photo-corner::before,
+.photo-corner::after {
+    content: "";
+    position: absolute;
+    background: var(--gold-light);
+    box-shadow: 0 0 8px rgba(228,204,145,.5);
+}
+
+.photo-corner::before {
+    width: 18px;
+    height: 1px;
+}
+
+.photo-corner::after {
+    width: 1px;
+    height: 18px;
+}
+
+.photo-corner.tl {
+    top: 3px;
+    left: 3px;
+}
+
+.photo-corner.tr {
+    top: 3px;
+    right: 3px;
+    transform: rotate(90deg);
+}
+
+.photo-corner.bl {
+    bottom: 3px;
+    left: 3px;
+    transform: rotate(-90deg);
+}
+
+.photo-corner.br {
+    bottom: 3px;
+    right: 3px;
+    transform: rotate(180deg);
+}
+
+/* Imagen */
+.photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+
+    filter:
+        saturate(.92)
+        contrast(1.03)
+        brightness(.94);
+
+    transition:
+        transform .8s ease,
+        filter .8s ease;
+}
+
+/* Texto debajo de la foto */
+.photo-caption {
+    margin: 30px auto 0;
+    max-width: 600px;
+
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.6;
+    color: rgba(248,240,221,.9);
+}
+
+/* Detalle dorado */
+.photo-caption::before {
+    content: "Codigo de vestimenta";
+    display: block;
+    margin-bottom: 12px;
+
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 10px rgba(228,204,145,.65);
+}
+
+/* Texto pequeño */
+.photo-subcaption {
+    margin-top: 10px;
+
+    font-family: var(--sans);
+    font-size: .72rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.75);
+}
+
+/* Hover solamente para PC */
+@media (min-width: 701px) {
+
+    .photo-frame:hover {
+        transform: rotate(0deg) translateY(-5px);
+
+        box-shadow:
+            0 40px 90px rgba(0,0,0,.48),
+            0 0 45px rgba(228,204,145,.13);
+    }
+
+    .photo-frame:hover img {
+        transform: scale(1.015);
+        filter:
+            saturate(1)
+            contrast(1.04)
+            brightness(1);
+    }
+}
+
+/* =========================================================
+   FECHA · CALENDARIO + COUNTDOWN
+========================================================= */
+
+.date-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brillo ambiental de la sección */
+.date-section::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(228,204,145,.09),
+        transparent 68%
+    );
+
+    pointer-events: none;
+}
+
+/* Contenedor */
+.date-section .section-inner {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   CALENDARIO
+========================================================= */
+
+.calendar-wrapper {
+    position: relative;
+    width: min(100%, 520px);
+    margin: 38px auto 0;
+    padding: 38px 42px 34px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.34),
+        inset 0 0 40px rgba(228,204,145,.025);
+
+    backdrop-filter: blur(5px);
+
+    overflow: hidden;
+}
+
+/* Marco interior */
+.calendar-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    pointer-events: none;
+}
+
+
+/* Pequeños adornos */
+.calendar-decoration {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: var(--gold-light);
+
+    transform: rotate(45deg);
+
+    box-shadow:
+        0 0 10px rgba(228,204,145,.65);
+
+    z-index: 3;
+}
+
+.calendar-decoration.tl {
+    top: 20px;
+    left: 20px;
+}
+
+.calendar-decoration.tr {
+    top: 20px;
+    right: 20px;
+}
+
+.calendar-decoration.bl {
+    bottom: 20px;
+    left: 20px;
+}
+
+.calendar-decoration.br {
+    bottom: 20px;
+    right: 20px;
+}
+
+
+/* Mes */
+.calendar-month {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 5px;
+
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 4rem);
+    font-style: italic;
+    font-weight: 400;
+
+    line-height: .9;
+
+    color: var(--cream);
+
+    text-shadow:
+        0 0 20px rgba(228,204,145,.12);
+}
+
+
+/* Año */
+.calendar-year {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 25px;
+
+    font-family: var(--sans);
+    font-size: .65rem;
+    letter-spacing: .45em;
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.7);
+}
+
+
+/* Días de la semana */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    margin-bottom: 10px;
+
+    font-family: var(--sans);
+    font-size: .58rem;
+    font-weight: 500;
+
+    letter-spacing: .08em;
+
+    color: rgba(228,204,145,.65);
+}
+
+
+/* Números */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+
+    font-family: var(--serif);
+    font-size: 1.1rem;
+
+    color: rgba(248,240,221,.72);
+}
+
+
+/* Cada día */
+.calendar-day {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 42px;
+
+    z-index: 1;
+}
+
+
+/* Días fuera del mes */
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+
+/* El día 20 */
+.calendar-day.special {
+    color: var(--navy-1);
+    font-size: 1.35rem;
+    font-weight: 600;
+
+    z-index: 2;
+}
+
+
+/* Círculo del 20 */
+.calendar-day.special::before {
+    content: "";
+
+    position: absolute;
+
+    width: 39px;
+    height: 39px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            var(--gold-light) 0%,
+            var(--gold) 65%,
+            var(--gold-dark) 100%
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(228,204,145,.55),
+        0 0 18px rgba(228,204,145,.38);
+
+    z-index: -1;
+
+    animation:
+        datePulse 2.8s ease-in-out infinite;
+}
+
+
+/* Destello */
+.calendar-day.special::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: -7px;
+    right: 1px;
+
+    font-family: var(--serif);
+    font-size: .8rem;
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 9px rgba(228,204,145,.8);
+
+    animation:
+        dateSparkle 2.8s ease-in-out infinite;
+}
+
+
+/* Línea decorativa */
+.calendar-line {
+    width: 70px;
+    height: 1px;
+
+    margin: 25px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-light),
+            transparent
+        );
+
+    opacity: .65;
+}
+
+
+@keyframes datePulse {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(.95);
+        box-shadow:
+            0 0 0 1px rgba(228,204,145,.5),
+            0 0 12px rgba(228,204,145,.25);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        box-shadow:
+            0 0 0 1px rgba(228,204,145,.7),
+            0 0 25px rgba(228,204,145,.5);
+    }
+}
+
+@keyframes dateSparkle {
+
+    0%, 100% {
+        opacity: .35;
+        transform: scale(.8) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(12deg);
+    }
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown-area {
+    position: relative;
+
+    width: min(100%, 720px);
+
+    margin: 60px auto 0;
+
+    text-align: center;
+}
+
+
+/* Texto */
+.countdown-intro {
+    margin-bottom: 22px;
+
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-style: italic;
+
+    color: rgba(248,240,221,.78);
+}
+
+
+/* Línea completa */
+.countdown-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    font-family: var(--serif);
+
+    white-space: nowrap;
+}
+
+
+/* Cada número */
+.countdown-item {
+    display: flex;
+    align-items: baseline;
+
+    gap: 6px;
+}
+
+
+/* Número */
+.countdown-number {
+    min-width: 2ch;
+
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+
+    color: var(--cream);
+
+    text-shadow:
+        0 0 16px rgba(228,204,145,.12);
+}
+
+
+/* Palabra */
+.countdown-label {
+    font-family: var(--sans);
+    font-size: .55rem;
+
+    letter-spacing: .16em;
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.65);
+}
+
+
+/* Separadores */
+.countdown-separator {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+
+    color: var(--gold-light);
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   RELOJ DE ARENA
+========================================================= */
+
+.hourglass {
+    position: relative;
+
+    width: 34px;
+    height: 48px;
+
+    margin: 25px auto 0;
+}
+
+
+/* Cristal */
+.hourglass::before,
+.hourglass::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    width: 24px;
+    height: 24px;
+
+    transform: translateX(-50%);
+
+    border: 1.5px solid var(--gold-light);
+
+    background: rgba(228,204,145,.025);
+}
+
+
+/* Parte superior */
+.hourglass::before {
+    top: 0;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        72% 50%,
+        28% 50%
+    );
+
+    border-bottom: 0;
+}
+
+
+/* Parte inferior */
+.hourglass::after {
+    bottom: 0;
+
+    clip-path: polygon(
+        28% 50%,
+        72% 50%,
+        100% 100%,
+        0 100%
+    );
+
+    border-top: 0;
+}
+
+
+/* Arena */
+.hourglass-sand {
+    position: absolute;
+
+    left: 50%;
+    top: 5px;
+
+    width: 10px;
+    height: 17px;
+
+    transform: translateX(-50%);
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+/* Arena que cae */
+.hourglass-sand::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 3px;
+
+    width: 4px;
+    height: 17px;
+
+    background: var(--gold-light);
+
+    box-shadow:
+        0 0 8px rgba(228,204,145,.5);
+
+    animation:
+        sandFall 2.5s linear infinite;
+}
+
+
+/* Arena inferior */
+.hourglass-sand::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -3px;
+
+    width: 10px;
+    height: 7px;
+
+    border-radius: 50% 50% 35% 35%;
+
+    background: var(--gold);
+
+    animation:
+        sandCollect 2.5s linear infinite;
+}
+
+
+@keyframes sandFall {
+
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+
+    15% {
+        height: 17px;
+        opacity: 1;
+    }
+
+    75% {
+        height: 17px;
+        opacity: 1;
+    }
+
+    100% {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+
+@keyframes sandCollect {
+
+    0%,
+    20% {
+        transform: scaleY(.35);
+    }
+
+    80%,
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+/* =========================================================
+   ITINERARIO · CAMINO DE EVENTOS
+========================================================= */
+
+.itinerary-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brillo ambiental */
+.itinerary-section::before {
+    content: "";
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.07),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Contenedor */
+.itinerary-map {
+    position: relative;
+
+    width: min(100%, 850px);
+
+    margin: 55px auto 0;
+
+    padding: 20px 0 40px;
+}
+
+
+/* =========================================================
+   CAMINO CURVO
+========================================================= */
+
+.itinerary-path {
+    position: absolute;
+
+    top: 15px;
+    left: 50%;
+
+    width: 100%;
+    height: calc(100% - 30px);
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.itinerary-path svg {
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+
+/* Camino principal */
+.itinerary-path-main {
+    fill: none;
+
+    stroke: rgba(228,204,145,.25);
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 6 10;
+
+    animation:
+        itineraryFlow 5s linear infinite;
+}
+
+
+/* Camino luminoso */
+.itinerary-path-glow {
+    fill: none;
+
+    stroke: rgba(228,204,145,.08);
+
+    stroke-width: 7;
+
+    stroke-linecap: round;
+
+    filter: blur(4px);
+}
+
+
+@keyframes itineraryFlow {
+
+    to {
+        stroke-dashoffset: -32;
+    }
+
+}
+
+
+/* =========================================================
+   EVENTOS
+========================================================= */
+
+.itinerary-event {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 50%;
+
+    min-height: 125px;
+
+    margin-bottom: 20px;
+
+    z-index: 2;
+}
+
+
+/* Alternar izquierda / derecha */
+
+.itinerary-event.left {
+    justify-content: flex-end;
+
+    padding-right: 65px;
+}
+
+.itinerary-event.right {
+    margin-left: 50%;
+
+    justify-content: flex-start;
+
+    padding-left: 65px;
+}
+
+
+/* Contenido */
+.itinerary-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    width: 300px;
+
+    padding: 18px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    border: 1px solid rgba(228,204,145,.22);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.22);
+
+    backdrop-filter: blur(5px);
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
+}
+
+
+/* Hover */
+@media (min-width:701px) {
+
+    .itinerary-card:hover {
+        transform: translateY(-5px);
+
+        border-color:
+            rgba(228,204,145,.55);
+
+        box-shadow:
+            0 25px 55px rgba(0,0,0,.32),
+            0 0 25px rgba(228,204,145,.06);
+    }
+
+}
+
+
+/* =========================================================
+   ICONO
+========================================================= */
+
+.itinerary-icon {
+    flex: 0 0 62px;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(228,204,145,.35);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.08),
+            rgba(255,255,255,.01)
+        );
+
+    color: var(--gold-light);
+
+    box-shadow:
+        0 0 18px rgba(228,204,145,.05);
+}
+
+
+/* SVG */
+.itinerary-icon svg {
+    width: 30px;
+    height: 30px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.itinerary-info {
+    min-width: 0;
+}
+
+.itinerary-time {
+    margin-bottom: 3px;
+
+    font-family: var(--serif);
+
+    font-size: 1.7rem;
+
+    font-style: italic;
+
+    color: var(--cream);
+
+    line-height: 1;
+}
+
+
+.itinerary-name {
+    font-family: var(--sans);
+
+    font-size: .66rem;
+
+    letter-spacing: .1em;
+
+    text-transform: uppercase;
+
+    line-height: 1.5;
+
+    color: rgba(248,240,221,.7);
+}
+
+
+/* =========================================================
+   PUNTO SOBRE EL CAMINO
+========================================================= */
+
+.itinerary-dot {
+    position: absolute;
+
+    top: 50%;
+
+    width: 13px;
+    height: 13px;
+
+    transform:
+        translateY(-50%)
+        rotate(45deg);
+
+    background: var(--gold);
+
+    border: 1px solid var(--gold-light);
+
+    box-shadow:
+        0 0 0 5px rgba(228,204,145,.055),
+        0 0 18px rgba(228,204,145,.35);
+
+    z-index: 4;
+}
+
+
+.itinerary-event.left .itinerary-dot {
+    right: -7px;
+}
+
+
+.itinerary-event.right .itinerary-dot {
+    left: -7px;
+}
+
+
+/* =========================================================
+   NÚMERO DEL EVENTO
+========================================================= */
+
+.itinerary-number {
+    position: absolute;
+
+    font-family: var(--sans);
+
+    font-size: .52rem;
+
+    letter-spacing: .18em;
+
+    color: rgba(228,204,145,.5);
+
+    top: 8px;
+}
+
+
+.itinerary-event.left .itinerary-number {
+    right: 76px;
+}
+
+
+.itinerary-event.right .itinerary-number {
+    left: 76px;
+}
+
+
+/* =========================================================
+   FINAL DEL CAMINO
+========================================================= */
+
+.itinerary-finish {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    z-index: 3;
+}
+
+
+.itinerary-finish-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(228,204,145,.5);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.13),
+            rgba(255,255,255,.015)
+        );
+
+    color: var(--gold-light);
+
+    box-shadow:
+        0 0 25px rgba(228,204,145,.12);
+}
+
+
+.itinerary-finish-icon svg {
+    width: 28px;
+    height: 28px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* Texto final */
+
+.itinerary-finish-text {
+    position: absolute;
+
+    top: 68px;
+
+    font-family: var(--serif);
+
+    font-size: 1.1rem;
+
+    font-style: italic;
+
+    color: rgba(248,240,221,.65);
+
+    white-space: nowrap;
+}
+
+
+
+/* =========================================================
+   UBICACIÓN · MAPA INTERACTIVO
+========================================================= */
+
+.location-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.location-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.08),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MAPA
+========================================================= */
+
+.location-map {
+    position: relative;
+
+    width: min(100%, 850px);
+    height: 500px;
+
+    margin: 45px auto 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(228,204,145,.32);
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(52,97,136,.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(132,140,187,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #07112e,
+            #050a20
+        );
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.38),
+        inset 0 0 70px rgba(0,0,0,.25);
+}
+
+
+/* Borde interior */
+
+.location-map::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border: 1px solid rgba(228,204,145,.12);
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   CALLES DECORATIVAS
+========================================================= */
+
+.map-road {
+    position: absolute;
+
+    height: 1px;
+
+    background: rgba(255,255,255,.06);
+
+    transform-origin: left center;
+}
+
+.map-road.r1 {
+    width: 75%;
+    top: 20%;
+    left: -5%;
+    transform: rotate(12deg);
+}
+
+.map-road.r2 {
+    width: 65%;
+    top: 45%;
+    left: 35%;
+    transform: rotate(-17deg);
+}
+
+.map-road.r3 {
+    width: 80%;
+    top: 73%;
+    left: -5%;
+    transform: rotate(-8deg);
+}
+
+.map-road.r4 {
+    width: 50%;
+    top: 88%;
+    left: 45%;
+    transform: rotate(18deg);
+}
+
+.map-road.r5 {
+    width: 55%;
+    top: 8%;
+    left: 48%;
+    transform: rotate(42deg);
+}
+
+
+/* Líneas secundarias */
+
+.map-road::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 5px;
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255,255,255,.025);
+}
+
+
+/* =========================================================
+   PEQUEÑOS ELEMENTOS DEL MAPA
+========================================================= */
+
+.map-building {
+    position: absolute;
+
+    width: 45px;
+    height: 32px;
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    background: rgba(255,255,255,.025);
+
+    transform: rotate(18deg);
+}
+
+.map-building.b1 {
+    top: 16%;
+    left: 20%;
+}
+
+.map-building.b2 {
+    top: 30%;
+    right: 18%;
+    transform: rotate(-12deg);
+}
+
+.map-building.b3 {
+    bottom: 22%;
+    left: 15%;
+    transform: rotate(-8deg);
+}
+
+.map-building.b4 {
+    bottom: 14%;
+    right: 25%;
+    transform: rotate(14deg);
+}
+
+
+/* =========================================================
+   CAMINO
+========================================================= */
+
+.location-route {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.location-route svg {
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+
+/* Glow del camino */
+
+.route-glow {
+    fill: none;
+
+    stroke: rgba(228,204,145,.12);
+
+    stroke-width: 10;
+
+    stroke-linecap: round;
+
+    filter: blur(5px);
+
+    opacity: 0;
+}
+
+
+/* Camino */
+
+.route-path {
+    fill: none;
+
+    stroke: var(--gold-light);
+
+    stroke-width: 2.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1200;
+
+    stroke-dashoffset: 1200;
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(228,204,145,.35)
+        );
+
+    transition:
+        stroke-dashoffset 3s
+        cubic-bezier(.65,0,.35,1);
+}
+
+
+/* Cuando entra a pantalla */
+
+.location-map.location-active .route-path {
+    animation: drawRoute 5s linear infinite;
+}
+
+@keyframes drawRoute {
+
+    0% {
+        stroke-dashoffset: 1200;
+    }
+
+    45% {
+        stroke-dashoffset: 0;
+    }
+
+    55% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -1200;
+    }
+
+}
+
+.location-map.location-active .route-glow {
+    opacity: .35;
+
+    animation: routeGlowInfinite 5s ease-in-out infinite;
+}
+
+@keyframes routeGlowInfinite {
+
+    0%, 100% {
+        opacity: .15;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+}
+
+
+/* =========================================================
+   PUNTO DE INICIO
+========================================================= */
+
+.map-start {
+    position: absolute;
+
+    left: 13%;
+    top: 75%;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: var(--lavender-light);
+
+    box-shadow:
+        0 0 0 5px rgba(149,147,194,.08),
+        0 0 15px rgba(149,147,194,.35);
+
+    z-index: 4;
+}
+
+.map-start::after {
+    content: "Aquí comienza el camino";
+
+    position: absolute;
+
+    left: 18px;
+    top: -5px;
+
+    width: max-content;
+
+    font-family: var(--sans);
+    font-size: .48rem;
+
+    letter-spacing: .12em;
+    text-transform: uppercase;
+
+    color: rgba(248,240,221,.4);
+}
+
+
+/* =========================================================
+   DESTINO
+========================================================= */
+
+.map-destination {
+    position: absolute;
+
+    right: 13%;
+    top: 21%;
+
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--gold-light);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.17),
+            rgba(228,204,145,.035) 55%,
+            transparent 70%
+        );
+
+    color: var(--gold-light);
+
+    cursor: pointer;
+
+    z-index: 6;
+
+    opacity: .35;
+
+    transform: scale(.9);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+
+/* Pin */
+
+.map-destination svg {
+    width: 30px;
+    height: 30px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* Activar después del recorrido */
+
+.location-map.location-active .map-destination {
+    animation:
+        destinationPulse 1.8s
+        3.1s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes destinationPulse {
+
+    0%, 100% {
+        opacity: .65;
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 0 0 rgba(228,204,145,.25),
+            0 0 15px rgba(228,204,145,.18);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.12);
+
+        box-shadow:
+            0 0 0 12px rgba(228,204,145,.035),
+            0 0 35px rgba(228,204,145,.55);
+    }
+
+}
+
+
+/* Texto sobre el destino */
+
+.map-destination-label {
+    position: absolute;
+
+    right: 7%;
+    top: 11%;
+
+    font-family: var(--serif);
+
+    font-size: 1.15rem;
+
+    font-style: italic;
+
+    color: var(--cream);
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition:
+        opacity .7s ease 3s,
+        transform .7s ease 3s;
+
+    z-index: 5;
+}
+
+.location-map.location-active .map-destination-label {
+    opacity: .9;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   TEXTO DEBAJO DEL MAPA
+========================================================= */
+
+.location-info {
+    position: relative;
+
+    max-width: 600px;
+
+    margin: 32px auto 0;
+
+    text-align: center;
+}
+
+
+.location-name {
+    font-family: var(--serif);
+
+    font-size: clamp(1.7rem, 4vw, 2.2rem);
+
+    color: var(--cream);
+}
+
+
+.location-address {
+    margin-top: 8px;
+
+    font-family: var(--sans);
+
+    font-size: .68rem;
+
+    line-height: 1.7;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+
+    color: rgba(248,240,221,.55);
+}
+
+
+.location-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding: 12px 22px;
+
+    border: 1px solid rgba(228,204,145,.4);
+
+    background: rgba(228,204,145,.035);
+
+    color: var(--gold-light);
+
+    font-family: var(--sans);
+
+    font-size: .6rem;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+
+.location-button:hover {
+    background: rgba(228,204,145,.09);
+
+    border-color: var(--gold-light);
+
+    transform: translateY(-2px);
+}
+
+
+.location-button svg {
+    width: 16px;
+    height: 16px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+}
+
+
+/* =========================================================
+   GALERÍA · VIAJE A TRAVÉS DE LOS AÑOS
+========================================================= */
+
+.gallery-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.07),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INTRODUCCIÓN
+========================================================= */
+
+.gallery-intro {
+    width: min(100%, 650px);
+
+    margin: 25px auto 0;
+
+    text-align: center;
+
+    font-family: var(--serif);
+
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+
+    line-height: 1.65;
+
+    color: rgba(248,240,221,.72);
+}
+
+
+/* =========================================================
+   CONTENEDOR DE TARJETAS
+========================================================= */
+
+.memory-gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 35px;
+
+    width: min(100%, 850px);
+
+    margin: 50px auto 0;
+}
+
+
+/* =========================================================
+   TARJETA
+========================================================= */
+
+.memory-card {
+    position: relative;
+
+    height: 390px;
+
+    perspective: 1200px;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+
+/* Interior que gira */
+
+.memory-card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .9s
+        cubic-bezier(.65,.05,.36,1);
+}
+
+
+/* Estado girado */
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================================
+   CARAS
+========================================================= */
+
+.memory-card-front,
+.memory-card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(228,204,145,.38);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.35);
+
+}
+
+
+/* =========================================================
+   FRENTE
+========================================================= */
+
+.memory-card-front {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,11,36,.05),
+            rgba(5,11,36,.92)
+        );
+
+}
+
+
+/* Imagen */
+
+.memory-photo {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        brightness(.78)
+        saturate(.88);
+
+    transition:
+        transform .8s ease,
+        filter .8s ease;
+}
+
+
+/* Degradado sobre imagen */
+
+.memory-card-front::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(5,11,36,.95) 0%,
+            rgba(5,11,36,.55) 38%,
+            rgba(5,11,36,.04) 75%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MARCO INTERIOR
+========================================================= */
+
+.memory-card-front::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border: 1px solid rgba(228,204,145,.22);
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL FRENTE
+========================================================= */
+
+.memory-front-content {
+
+    position: relative;
+
+    z-index: 4;
+
+    padding: 28px 25px;
+
+    text-align: center;
+}
+
+
+.memory-age {
+
+    margin-bottom: 5px;
+
+    font-family: var(--serif);
+
+    font-size: 3.1rem;
+
+    font-style: italic;
+
+    line-height: 1;
+
+    color: var(--cream);
+
+    text-shadow:
+        0 0 18px rgba(0,0,0,.45);
+}
+
+
+.memory-title {
+
+    font-family: var(--sans);
+
+    font-size: .65rem;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+}
+
+
+.memory-hint {
+
+    margin-top: 13px;
+
+    font-family: var(--serif);
+
+    font-size: .95rem;
+
+    font-style: italic;
+
+    color: rgba(248,240,221,.62);
+}
+
+
+/* =========================================================
+   HOVER DE FOTO
+========================================================= */
+
+@media (min-width:701px) {
+
+    .memory-card:not(.flipped):hover
+    .memory-photo {
+
+        transform: scale(1.045);
+
+        filter:
+            brightness(.88)
+            saturate(1);
+    }
+
+}
+
+
+/* =========================================================
+   PARTE TRASERA
+========================================================= */
+
+.memory-card-back {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    text-align: center;
+
+    transform: rotateY(180deg);
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(228,204,145,.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #0b1740,
+            #050b24
+        );
+}
+
+
+/* Marco interior trasero */
+
+.memory-card-back::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border: 1px solid rgba(228,204,145,.17);
+
+    pointer-events: none;
+}
+
+
+/* Ornamento */
+
+.memory-back-ornament {
+
+    margin-bottom: 18px;
+
+    font-family: var(--serif);
+
+    font-size: 1.2rem;
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 12px rgba(228,204,145,.5);
+}
+
+
+/* Edad trasera */
+
+.memory-back-age {
+
+    margin-bottom: 15px;
+
+    font-family: var(--serif);
+
+    font-size: 2.4rem;
+
+    font-style: italic;
+
+    color: var(--gold-light);
+}
+
+
+/* Anécdota */
+
+.memory-story {
+
+    max-width: 310px;
+
+    margin: auto;
+
+    font-family: var(--serif);
+
+    font-size: 1.18rem;
+
+    line-height: 1.65;
+
+    color: rgba(248,240,221,.86);
+}
+
+
+/* Indicador para cerrar */
+
+.memory-back-hint {
+
+    margin-top: 22px;
+
+    font-family: var(--sans);
+
+    font-size: .52rem;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.48);
+}
+
+
+/* =========================================================
+   TARJETA MISTERIOSA · 15 AÑOS
+========================================================= */
+
+.memory-card.mystery .memory-card-front {
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.11),
+            transparent 48%
+        ),
+        linear-gradient(
+            145deg,
+            #0b1740,
+            #050b24
+        );
+}
+
+
+.memory-card.mystery .memory-card-front::after {
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 20%,
+            rgba(5,11,36,.65) 100%
+        );
+}
+
+
+.mystery-question {
+
+    position: relative;
+
+    z-index: 4;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 105px;
+    height: 105px;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(228,204,145,.6);
+
+    font-family: var(--serif);
+
+    font-size: 4.5rem;
+
+    font-style: italic;
+
+    color: var(--gold-light);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.10),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px rgba(228,204,145,.10);
+
+    animation:
+        mysteryPulse 2.8s ease-in-out infinite;
+}
+
+
+.mystery-title {
+
+    position: relative;
+
+    z-index: 4;
+
+    font-family: var(--serif);
+
+    font-size: 2rem;
+
+    font-style: italic;
+
+    color: var(--cream);
+}
+
+
+.mystery-subtitle {
+
+    position: relative;
+
+    z-index: 4;
+
+    margin-top: 8px;
+
+    font-family: var(--sans);
+
+    font-size: .6rem;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.65);
+}
+
+
+@keyframes mysteryPulse {
+
+    0%, 100% {
+
+        transform: scale(.96);
+
+        box-shadow:
+            0 0 20px rgba(228,204,145,.08);
+    }
+
+    50% {
+
+        transform: scale(1.06);
+
+        box-shadow:
+            0 0 35px rgba(228,204,145,.24);
+    }
+}
+
+
+/* =========================================================
+   INDICADOR GENERAL
+========================================================= */
+
+.gallery-touch-hint {
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    font-family: var(--sans);
+
+    font-size: .58rem;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+
+    color: rgba(228,204,145,.52);
+}
+
+/* =========================================================
+   RSVP · CONFIRMACIÓN
+========================================================= */
+
+.rsvp-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(228,204,145,.08),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.rsvp-card {
+    position: relative;
+
+    width: min(100%, 680px);
+
+    margin: 45px auto 0;
+
+    padding: 55px 45px 50px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    border: 1px solid rgba(228,204,145,.35);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.35),
+        inset 0 0 45px rgba(228,204,145,.025);
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* Marco */
+
+.rsvp-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border: 1px solid rgba(228,204,145,.13);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SOBRE DECORATIVO
+========================================================= */
+
+.rsvp-envelope {
+    position: relative;
+
+    width: 92px;
+    height: 68px;
+
+    margin: 0 auto 30px;
+
+    border: 1px solid rgba(228,204,145,.5);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(228,204,145,.12),
+            rgba(255,255,255,.02)
+        );
+
+    box-shadow:
+        0 0 25px rgba(228,204,145,.08);
+
+    animation:
+        rsvpEnvelopeFloat 3.5s ease-in-out infinite;
+}
+
+
+/* Solapa */
+
+.rsvp-envelope::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: -1px;
+
+    width: 65px;
+    height: 65px;
+
+    border-left: 1px solid rgba(228,204,145,.5);
+    border-bottom: 1px solid rgba(228,204,145,.5);
+
+    transform:
+        translateX(-50%)
+        rotate(-45deg)
+        scale(.72);
+
+    transform-origin: center;
+}
+
+
+/* Líneas inferiores */
+
+.rsvp-envelope::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(228,204,145,.4),
+            transparent
+        );
+}
+
+
+@keyframes rsvpEnvelopeFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.rsvp-message {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 520px;
+
+    margin: auto;
+
+    font-family: var(--serif);
+
+    font-size: clamp(1.55rem, 4vw, 2rem);
+
+    line-height: 1.45;
+
+    color: var(--cream);
+}
+
+
+.rsvp-message em {
+    color: var(--gold-light);
+
+    font-style: italic;
+}
+
+
+/* Texto secundario */
+
+.rsvp-description {
+    max-width: 500px;
+
+    margin: 18px auto 0;
+
+    font-family: var(--sans);
+
+    font-size: .68rem;
+
+    line-height: 1.8;
+
+    letter-spacing: .08em;
+
+    color: rgba(248,240,221,.58);
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.rsvp-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 35px;
+}
+
+
+.rsvp-button {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 190px;
+
+    padding: 14px 20px;
+
+    border: 1px solid rgba(228,204,145,.42);
+
+    text-decoration: none;
+
+    font-family: var(--sans);
+
+    font-size: .58rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* Principal */
+
+.rsvp-button.primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(228,204,145,.22),
+            rgba(201,169,106,.08)
+        );
+
+    color: var(--gold-light);
+
+    box-shadow:
+        0 0 20px rgba(228,204,145,.06);
+}
+
+
+/* Secundario */
+
+.rsvp-button.secondary {
+
+    background: rgba(255,255,255,.018);
+
+    color: rgba(248,240,221,.6);
+
+    border-color:
+        rgba(248,240,221,.16);
+}
+
+
+/* Hover */
+
+.rsvp-button:hover {
+
+    transform: translateY(-3px);
+
+    border-color: var(--gold-light);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.22);
+}
+
+
+.rsvp-button.primary:hover {
+
+    background:
+        rgba(228,204,145,.15);
+}
+
+
+/* Iconos */
+
+.rsvp-button svg {
+
+    width: 16px;
+    height: 16px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   PEQUEÑO DETALLE FINAL
+========================================================= */
+
+.rsvp-note {
+
+    margin-top: 28px;
+
+    font-family: var(--serif);
+
+    font-size: 1rem;
+
+    font-style: italic;
+
+    color: rgba(228,204,145,.55);
+}
+
+
+/* =========================
+   SECCIÓN QR / REGALO
+========================= */
+.gift-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-card {
+    position: relative;
+    width: min(100%, 620px);
+    margin: 0 auto;
+    padding: 55px 35px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 25%, rgba(228,204,145,.10), transparent 40%),
+        linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+    border: 1px solid rgba(228,204,145,.38);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.30),
+        inset 0 0 45px rgba(228,204,145,.025);
+    backdrop-filter: blur(5px);
+}
+
+.gift-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(228,204,145,.15);
+    pointer-events: none;
+}
+
+.gift-icon {
+    position: relative;
+    z-index: 2;
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(228,204,145,.45);
+    border-radius: 50%;
+    color: var(--gold-light);
+    font-size: 1.5rem;
+    box-shadow: 0 0 25px rgba(201,169,106,.12);
+}
+
+.gift-message {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto 28px;
+    max-width: 480px;
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.65;
+    color: rgba(248,240,221,.9);
+}
+
+.gift-message em {
+    color: var(--gold-light);
+}
+
+.qr-wrapper {
+    position: relative;
+    z-index: 2;
+    width: min(230px, 75vw);
+    aspect-ratio: 1;
+    margin: 0 auto 24px;
+    padding: 12px;
+    background: var(--cream);
+    border: 2px solid var(--gold);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35),
+        0 0 30px rgba(228,204,145,.12);
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.qr-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.4),
+        0 0 40px rgba(228,204,145,.22);
+}
+
+.qr-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.qr-label {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(248,240,221,.55);
+}
+
+.gift-note {
+    position: relative;
+    z-index: 2;
+    margin: 20px auto 0;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(228,204,145,.75);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+.site-footer {
+    position: relative;
+    padding: 45px 20px 35px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(201,169,106,.10), transparent 45%),
+        linear-gradient(180deg, var(--navy-2), var(--navy-1));
+    border-top: 1px solid rgba(228,204,145,.20);
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "✦";
+    display: block;
+    margin-bottom: 14px;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    text-shadow: 0 0 12px rgba(228,204,145,.65);
+    animation: footerStar 3s ease-in-out infinite;
+}
+
+.footer-line {
+    width: 90px;
+    height: 1px;
+    margin: 0 auto 18px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+.footer-text {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: .08em;
+    color: rgba(248,240,221,.72);
+}
+
+.footer-brand {
+    display: inline-block;
+    margin-top: 7px;
+    font-family: var(--sans);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.footer-brand:hover {
+    color: var(--cream);
+    text-shadow: 0 0 12px rgba(228,204,145,.55);
+}
+
+.footer-year {
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: .65rem;
+    letter-spacing: .15em;
+    color: rgba(255,255,255,.35);
+}
+
+@keyframes footerStar {
+    0%, 100% {
+        opacity: .5;
+        transform: scale(.9) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(15deg);
+    }
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+
+}
+
+        /* ==========================================
+           BOTÓN MÚSICA
+        ========================================== */
+
+.music-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    color: white;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: scale(.7);
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease,
+        transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.music-button.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        background-image: url("https://drive.google.com/thumbnail?id=1YvOmkc1mEkdPEjTJYb0twyDm19K8pXch&sz=w800");
+    }
+    .section{
+        background-image: url("https://drive.google.com/thumbnail?id=1pv-NQZVPvdq2zFjO0BQKez38xXYtOTiN&sz=w800");
+    }
+    .envelope-seal {
+        top:56%;
+    }
+    .cover{
+      background-image: url("https://drive.google.com/thumbnail?id=1DmpJxiC5XPtkripELkSZIScfI1mtJmOK&sz=w800");
+      background-size: cover;
+    }
+    .cover-frame {
+        inset: 17px;
+    }
+
+
+    .cover-content {
+        width: 100%;
+
+        padding:
+            55px 25px
+            75px;
+    }
+
+
+    .cover-sun {
+        width: 125px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .cover-name {
+        font-size:
+            clamp(
+                4rem,
+                19vw,
+                6rem
+            );
+    }
+
+
+    .cover-subtitle {
+        margin-top: 24px;
+
+        font-size: 1.25rem;
+    }
+
+
+    .cover-ornament {
+        width: 70vw;
+
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+
+    .cover-date {
+        gap: 8px;
+
+        font-size: .68rem;
+
+        letter-spacing: .17em;
+    }
+
+
+    .cover-date-line {
+        width: 25px;
+    }
+
+
+    .cover-butterfly {
+        width: 105px;
+    }
+
+
+    .butterfly-gold {
+        left: 20px;
+
+        bottom: 35px;
+    }
+
+
+    .butterfly-blue {
+        right: 20px;
+
+        bottom: 10px;
+    }
+
+
+    .section {
+        padding:
+            75px 20px;
+    }
+
+
+    .countdown {
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap: 8px;
+    }
+
+
+    .timeline::before {
+        left: 12px;
+    }
+
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            20px
+            20px
+            20px
+            40px;
+
+        text-align: left;
+    }
+
+
+    .timeline-item:nth-child(odd) {
+        text-align: left;
+    }
+
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+    .timeline-item:nth-child(even)
+    .timeline-dot {
+        left: 8px;
+
+        right: auto;
+    }
+
+
+    .gallery {
+        grid-template-columns:
+            1fr;
+
+        gap: 12px;
+    }
+
+
+    .gallery img {
+        height: 390px;
+    }
+
+
+    .gallery img:nth-child(2),
+    .gallery img:nth-child(4) {
+        margin-top: 0;
+    }
+
+
+    .location-card {
+        padding: 28px 20px;
+    }
+    
+    /* INTRODUCCIÓN */
+
+.intro-section {
+    padding-top: 85px;
+    padding-bottom: 85px;
+    
+}
+
+.intro {
+    width: 100%;
+    padding: 48px 30px;
+}
+
+.intro p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+
+.intro::before {
+    inset: 8px;
+}
+
+.intro-decoration.top-left {
+    top: 18px;
+    left: 18px;
+}
+
+.intro-decoration.top-right {
+    top: 18px;
+    right: 18px;
+}
+
+.intro-decoration.bottom-left {
+    bottom: 18px;
+    left: 18px;
+}
+
+.intro-decoration.bottom-right {
+    bottom: 18px;
+    right: 18px;
+}
+
+/* FOTO · RESPONSIVE */
+
+.photo-section {
+    padding-top: 40px;
+    padding-bottom: 90px;
+    background-image: url("https://drive.google.com/thumbnail?id=1dbHPNxM28XXJ9RtF88CzzV0LR89rgFCB&sz=w800");
+    
+}
+
+.photo-frame {
+    width: calc(100% - 24px);
+    margin-top: 30px;
+    padding: 10px;
+    transform: rotate(-.5deg);
+}
+
+.photo-frame::before {
+    inset: 6px;
+}
+
+.photo-frame img {
+    aspect-ratio: 4 / 5;
+}
+
+.photo-caption {
+    padding: 0 14px;
+    margin-top: 28px;
+    font-size: 1.28rem;
+    line-height: 1.65;
+}
+
+.photo-subcaption {
+    font-size: .64rem;
+    letter-spacing: .16em;
+    line-height: 1.7;
+}
+
+.img-cod{
+    max-width: 40%;
+    position: absolute;
+    justify-self: anchor-center;
+}
+
+/* =========================================================
+   FECHA · RESPONSIVE
+========================================================= */
+
+.date-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+}
+
+.section-title {
+        font-size: clamp(1.8rem, 7vw, 4.2rem);
+}
+
+/* Calendario */
+
+.calendar-wrapper {
+    width: calc(100% - 12px);
+
+    margin-top: 32px;
+    backdrop-filter: none;
+    padding:
+        34px
+        22px
+        30px;
+}
+
+.calendar-month {
+    font-size: 3rem;
+}
+
+.calendar-year {
+    margin-bottom: 22px;
+
+    font-size: .58rem;
+    letter-spacing: .32em;
+}
+
+.calendar-weekdays {
+    font-size: .5rem;
+}
+
+.calendar-days {
+    gap: 2px;
+    font-size: 1rem;
+}
+
+.calendar-day {
+    height: 39px;
+}
+
+.calendar-day.special {
+    font-size: 1.2rem;
+}
+
+.calendar-day.special::before {
+    width: 35px;
+    height: 35px;
+}
+
+
+/* Countdown */
+
+.countdown-area {
+    margin-top: 50px;
+}
+
+.countdown-intro {
+    padding: 0 20px;
+
+    font-size: 1.18rem;
+    line-height: 1.5;
+}
+
+.countdown-line {
+    gap: 9px;
+}
+
+.countdown-number {
+    font-size: 1.8rem;
+}
+
+.countdown-label {
+    font-size: .48rem;
+    letter-spacing: .1em;
+}
+
+.countdown-separator {
+    font-size: 1.2rem;
+}
+
+.hourglass {
+    margin-top: 22px;
+}
+
+/* Itinerario */
+
+    .itinerary-section{
+        /* background-image: url("https://drive.google.com/thumbnail?id=1pv-NQZVPvdq2zFjO0BQKez38xXYtOTiN&sz=w800");*/
+        padding-bottom: 16px;
+    }
+    .itinerary-map {
+        width: 100%;
+
+        margin-top: 20px;
+
+        padding: 10px 8px 70px;
+    }
+
+  
+    .section-line{
+        margin: 8px auto 12px;
+    }
+
+    #itinerarySubtitle{
+        text-align: center;
+    }
+    /* El camino pasa a una sola columna */
+
+    .itinerary-path {
+        left: 29px;
+
+        width: 100%px;
+
+        transform: none;
+    }
+
+
+    .itinerary-path svg {
+        width: 100%;
+    }
+
+
+    .itinerary-event,
+    .itinerary-event.right {
+        width: 100%;
+
+        margin-left: 0;
+
+        min-height: 105px;
+
+        justify-content: flex-start;
+
+        padding-left: 62px;
+        padding-right: 5px;
+
+        margin-bottom: 10px;
+    }
+
+    .itinerary-event.right {
+        padding-left: none;
+        direction: rtl;
+    }
+
+    .itinerary-card {
+        width: 100%;
+
+        padding: 15px 14px;
+
+        gap: 13px;
+        background:none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter:none;
+    }
+
+
+    .itinerary-icon {
+        flex: 0 0 52px;
+
+        width: 52px;
+        height: 52px;
+    }
+
+
+    .itinerary-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    .itinerary-time {
+        font-size: 1.45rem;
+    }
+
+
+    .itinerary-name {
+        font-size: .58rem;
+    }
+
+
+    .itinerary-dot,
+    .itinerary-event.left .itinerary-dot,
+    .itinerary-event.right .itinerary-dot {
+        left: 22px;
+        right: auto;
+    }
+
+
+    .itinerary-number,
+    .itinerary-event.left .itinerary-number,
+    .itinerary-event.right .itinerary-number {
+        left: 8px;
+        right: auto;
+
+        top: 4px;
+
+        font-size: .45rem;
+    }
+
+
+    .itinerary-finish {
+
+        padding-left: 1px;
+    }
+
+
+    .itinerary-finish-icon {
+        width: 56px;
+        height: 56px;
+        position: absolute;
+        top: -34px;
+    }
+
+
+    .itinerary-finish-text {
+        left: 76px;
+
+        top: 24px;
+    }
+
+    /* Ubicación */
+    .location-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        
+    }
+
+
+    .location-map {
+        height: 430px;  
+        margin-top: 35px;
+        background:transparent;
+        background-color: rgba(255, 255, 255, 0.040);
+    }
+    .location-map::before {
+     border: none;
+    }
+
+
+    .map-start {
+        left: 11%;
+        top: 78%;
+    }
+
+
+    .map-start::after {
+        display: none;
+    }
+
+
+    .map-destination {
+        right: 3%;
+        top: 4%;
+
+        width: 60px;
+        height: 60px;
+    }
+
+
+    .map-destination-label {
+        right: 6%;
+        top: 7%;
+
+        font-size: 1rem;
+    }
+
+
+    .location-info {
+        padding: 0 15px;
+    }
+
+
+    .location-address {
+        font-size: .58rem;
+    }
+
+    /* Galería */
+        .gallery-section {
+
+        padding-top: 85px;
+        padding-bottom: 90px;
+        background-size: cover;
+        
+    }
+
+
+    .gallery-intro {
+
+        padding: 0 18px;
+
+        font-size: 1.18rem;
+
+        line-height: 1.65;
+    }
+
+
+    .memory-gallery {
+
+        grid-template-columns: 1fr;
+
+        width: min(100%, 430px);
+
+        gap: 25px;
+
+        margin-top: 40px;
+    }
+
+
+    .memory-card {
+
+        height: 390px;
+    }
+
+
+    .memory-front-content {
+
+        padding:
+            25px
+            22px;
+    }
+
+
+    .memory-age {
+
+        font-size: 2.8rem;
+    }
+
+
+    .memory-card-back {
+
+        padding: 30px 25px;
+        background: transparent;
+    }
+
+
+    .memory-story {
+
+        font-size: 1.1rem;
+
+        line-height: 1.6;
+    }
+
+    /* Confirmacion */
+        .rsvp-section {
+
+        padding-top: 85px;
+        padding-bottom: 90px;
+        
+    }
+
+
+    .rsvp-card {
+
+        width: calc(100% - 10px);
+
+        padding:
+            45px
+            22px
+            40px;
+    }
+
+
+    .rsvp-message {
+
+        font-size: 1.45rem;
+
+        line-height: 1.5;
+    }
+
+ 
+    .rsvp-envelope::before {
+     top: -20px;
+    }
+
+    .rsvp-description {
+
+        font-size: .62rem;
+
+        line-height: 1.8;
+    }
+
+
+    .rsvp-actions {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-top: 30px;
+    }
+
+
+    .rsvp-button {
+
+        width: min(100%, 280px);
+
+        min-width: 0;
+    }
+ 
+    /* Regalo */
+
+   
+        .gift-card {
+        padding: 45px 24px;
+    }
+
+    .gift-message {
+        font-size: 1.3rem;
+        line-height: 1.7;
+    }
+
+    .qr-wrapper {
+        width: min(210px, 72vw);
+    }
+
+    /* Footer */
+    .site-footer{
+        background-image: url("https://drive.google.com/thumbnail?id=1pv-NQZVPvdq2zFjO0BQKez38xXYtOTiN&sz=w800");
+        padding: 0px 0px 2px;
+    }
+    .footer-text {
+        font-size: .98rem;
+    }
+
+    .footer-brand {
+        font-size: .72rem;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .cover-frame {
+        inset: 13px;
+    }
+
+
+    .cover-content {
+        padding:
+            45px 18px
+            65px;
+    }
+
+
+    .cover-sun {
+        width: 105px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .cover-kicker {
+        font-size: .58rem;
+
+        letter-spacing: .27em;
+    }
+
+
+    .cover-name {
+        font-size: 3.65rem;
+    }
+
+
+    .cover-subtitle {
+        font-size: 1.1rem;
+    }
+
+
+    .cover-date {
+        font-size: .58rem;
+    }
+
+
+    .cover-butterfly {
+        width: 85px;
+    }
+    
+    .intro {
+    padding: 42px 24px;
+}
+
+.intro p {
+    font-size: 1.18rem;
+    line-height: 1.75;
+}
+
+.photo-frame {
+    width: calc(100% - 8px);
+    padding: 8px;
+}
+
+.photo-caption {
+    font-size: 1.18rem;
+}
+
+.photo-subcaption {
+    font-size: .58rem;
+}
+
+/* calendario */
+
+    .calendar-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .calendar-month {
+        font-size: 2.65rem;
+    }
+
+    .calendar-weekdays {
+        font-size: .43rem;
+    }
+
+    .calendar-days {
+        font-size: .92rem;
+    }
+
+    .calendar-day {
+        height: 36px;
+    }
+
+    .calendar-day.special::before {
+        width: 32px;
+        height: 32px;
+    }
+
+    .countdown-line {
+        gap: 5px;
+    }
+
+    .countdown-number {
+        font-size: 1.55rem;
+    }
+
+    .countdown-label {
+        font-size: .42rem;
+    }
+
+    .countdown-separator {
+        font-size: 1rem;
+    }
+
+    .itinerary-map {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    .itinerary-event,
+    .itinerary-event.right {
+        padding-left: 57px;
+    }
+
+    .itinerary-event.right{
+        direction: rtl;
+    }
+
+    .itinerary-dot,
+    .itinerary-event.left .itinerary-dot,
+    .itinerary-event.right .itinerary-dot {
+        left: 17px;
+    }
+
+
+    .itinerary-path {
+        left: 0;
+        min-width: 400px;
+        width: 400px;
+    }
+
+        .itinerary-path svg {
+            width: 400px;
+        }
+    .itinerary-card {
+        padding: 13px 11px;
+
+        gap: 10px;
+    }
+
+
+    .itinerary-icon {
+        flex-basis: 48px;
+
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .itinerary-time {
+        font-size: 1.3rem;
+    }
+
+
+    .itinerary-name {
+        font-size: .53rem;
+    }
+
+    
+    .location-map {
+        height: 390px;
+    }
+
+
+    .map-destination {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    .map-destination svg {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    .map-destination-label {
+        font-size: .9rem;
+    }
+
+    /* Galería */
+        .memory-card {
+
+        height: 360px;
+    }
+
+
+    .memory-age {
+
+        font-size: 2.5rem;
+    }
+
+
+    .memory-title {
+
+        font-size: .58rem;
+    }
+
+
+    .memory-story {
+
+        font-size: 1rem;
+    }
+
+
+    .mystery-question {
+
+        width: 90px;
+        height: 90px;
+
+        font-size: 3.8rem;
+    }
+
+
+    .mystery-title {
+
+        font-size: 1.7rem;
+    }
+
+    /* Confirmación */
+        .rsvp-card {
+
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    .rsvp-envelope {
+
+        width: 82px;
+        height: 60px;
+    }
+
+
+    .rsvp-message {
+
+        font-size: 1.32rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     SOBRE
+====================================================== -->
+
+<div class="envelope-screen" id="envelopeScreen">
+
+    <div class="sparkles sparkles-envelope" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="envelope-content">
+
+        <div class="envelope-small">
+            Una invitación especial
+        </div>
+
+        <h1 class="envelope-title">
+            Tienes una sorpresa
+        </h1>
+
+
+        <div
+            class="envelope-area"
+            id="envelopeButton"
+        >
+
+            <div class="envelope">
+
+                <div class="letter">
+
+                    <div class="letter-content">
+
+                        <span>
+                            Mis XV Años
+                        </span>
+
+                        <strong>
+                            Arleth
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="envelope-bottom"></div>
+
+
+                <div class="envelope-flap"></div>
+
+
+                <div class="envelope-seal">
+                    A
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="envelope-hint">
+            Toca el sobre para abrir
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+     PORTADA
+====================================================== -->
+
+<section class="cover" id="inicio">
+    <div class="sparkles sparkles-cover" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+
+    <!-- Marco -->
+
+    <div class="cover-frame"></div>
+
+
+    <img
+        id="cover-sun"
+        class="cover-sun"
+        src="https://drive.google.com/thumbnail?id=19aII3ylrJigUBaP2YGx8vSiCR1GPcdB9"
+        alt=""
+    >
+
+
+    <div class="cover-content">
+
+
+        <!-- pequeño título -->
+
+        <div class="cover-kicker">
+            Mis XV Años
+        </div>
+
+
+        <!-- nombre -->
+
+        <h1 class="cover-name">
+            Arleth
+        </h1>
+
+
+        <!-- frase -->
+
+        <div class="cover-subtitle">
+            Una noche para recordar
+        </div>
+
+
+        <!-- separador -->
+
+        <div class="cover-ornament">
+
+            <div class="ornament-center">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- fecha -->
+
+        <div class="cover-date">
+
+            <span class="cover-date-line"></span>
+
+            <span>
+                20 · Noviembre · 2026
+            </span>
+
+            <span class="cover-date-line"></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MARIPOSA DORADA
+    =================================================== -->
+
+    <img
+        class="cover-butterfly butterfly-gold"
+        src="https://drive.google.com/thumbnail?id=1UYy423FFWxRlssRfeHAjlFfrdy26VLUn"
+        alt=""
+    >
+
+
+    <!-- ==================================================
+         MARIPOSA AZUL
+    =================================================== -->
+
+    <img
+        class="cover-butterfly butterfly-blue"
+        src="https://drive.google.com/thumbnail?id=1AbuoWxf1r6GtZZULsjDHia5QgAhd_YrN"
+        alt=""
+    >
+
+
+</section>
+
+
+
+<!-- ======================================================
+     INTRODUCCIÓN
+====================================================== -->
+
+<section class="section intro-section reveal">
+
+        <div class="sparkles sparkles-envelope" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="section-inner">
+
+        <div class="section-kicker" style="display:none;">
+            Una celebración especial
+        </div>
+
+        <h2 class="section-title">
+            Welcome
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <div class="intro">
+
+            <!-- Brillos ambientales -->
+
+            <div class="intro-glow intro-glow-left"></div>
+            <div class="intro-glow intro-glow-right"></div>
+
+
+            <!-- Adornos -->
+
+            <span class="intro-decoration top-left"></span>
+            <span class="intro-decoration top-right"></span>
+            <span class="intro-decoration bottom-left"></span>
+            <span class="intro-decoration bottom-right"></span>
+
+
+            <!-- Mensaje -->
+
+            <p>
+                Hay momentos que se viven una sola vez 
+                y personas que los hacen inolvidables. 
+                Porque hay recuerdos que guardamos para 
+                toda la vida, quiero que tú seas parte 
+                de este momento y lo compartas conmigo.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     SECCIÓN FOTO
+====================================================== -->
+
+<section class="section photo-section reveal">
+
+    <div class="section-inner">
+
+
+        <h2 class="section-title">
+            El Comienzo de Algo Inolvidable
+        </h2>
+
+        <div class="section-line"></div>
+
+        <div class="photo-frame">
+
+            <span class="photo-corner tl"></span>
+            <span class="photo-corner tr"></span>
+            <span class="photo-corner bl"></span>
+            <span class="photo-corner br"></span>
+
+            <!-- Mantén aquí tu imagen actual -->
+            <img
+                src="https://drive.google.com/thumbnail?id=1dbHPNxM28XXJ9RtF88CzzV0LR89rgFCB&sz=w800"
+                alt="Recuerdo especial de mis XV años"
+            >
+
+        </div>
+
+        <div class="photo-caption">
+
+            Formal
+
+
+        </div>
+
+         <img
+        class="img-cod"
+        src="https://drive.google.com/thumbnail?id=18G-t-lMoFQKAErT6_6pitea4eTT0WeUV"
+        alt=""
+    >
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FECHA
+====================================================== -->
+
+<section class="section date-section reveal">
+
+    <div class="section-inner">
+
+        <div class="section-kicker">
+            Guarda esta fecha
+        </div>
+
+        <h2 class="section-title">
+            Una noche para recordar
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <!-- ================= CALENDARIO ================= -->
+
+        <div class="calendar-wrapper">
+
+            <span class="calendar-decoration tl"></span>
+            <span class="calendar-decoration tr"></span>
+            <span class="calendar-decoration bl"></span>
+            <span class="calendar-decoration br"></span>
+
+            <div class="calendar-month">
+                Noviembre
+            </div>
+
+            <div class="calendar-year">
+                2026
+            </div>
+
+
+            <div class="calendar-weekdays">
+                <span>DOM</span>
+                <span>LUN</span>
+                <span>MAR</span>
+                <span>MIÉ</span>
+                <span>JUE</span>
+                <span>VIE</span>
+                <span>SÁB</span>
+            </div>
+
+
+            <div class="calendar-days">
+
+                <!-- NOVIEMBRE 2026 -->
+
+                <span class="calendar-day">1</span>
+                <span class="calendar-day">2</span>
+                <span class="calendar-day">3</span>
+                <span class="calendar-day">4</span>
+                <span class="calendar-day">5</span>
+                <span class="calendar-day">6</span>
+                <span class="calendar-day">7</span>
+
+                <span class="calendar-day">8</span>
+                <span class="calendar-day">9</span>
+                <span class="calendar-day">10</span>
+                <span class="calendar-day">11</span>
+                <span class="calendar-day">12</span>
+                <span class="calendar-day">13</span>
+                <span class="calendar-day">14</span>
+
+                <span class="calendar-day">15</span>
+                <span class="calendar-day">16</span>
+                <span class="calendar-day">17</span>
+                <span class="calendar-day">18</span>
+                <span class="calendar-day">19</span>
+
+                <span class="calendar-day special">20</span>
+
+                <span class="calendar-day">21</span>
+
+                <span class="calendar-day">22</span>
+                <span class="calendar-day">23</span>
+                <span class="calendar-day">24</span>
+                <span class="calendar-day">25</span>
+                <span class="calendar-day">26</span>
+                <span class="calendar-day">27</span>
+                <span class="calendar-day">28</span>
+
+                <span class="calendar-day">29</span>
+                <span class="calendar-day">30</span>
+
+            </div>
+
+            <div class="calendar-line"></div>
+
+        </div>
+
+
+        <!-- ================= COUNTDOWN ================= -->
+
+        <div class="countdown-area">
+
+            <div class="countdown-intro">
+                Cada segundo nos acerca a este momento...
+            </div>
+
+
+            <div class="countdown-line">
+
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">
+                        00
+                    </span>
+
+                    <span class="countdown-label">
+                        días
+                    </span>
+                </div>
+
+
+                <span class="countdown-separator">·</span>
+
+
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">
+                        00
+                    </span>
+
+                    <span class="countdown-label">
+                        horas
+                    </span>
+                </div>
+
+
+                <span class="countdown-separator">·</span>
+
+
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">
+                        00
+                    </span>
+
+                    <span class="countdown-label">
+                        minutos
+                    </span>
+                </div>
+
+
+                <span class="countdown-separator">·</span>
+
+
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">
+                        00
+                    </span>
+
+                    <span class="countdown-label">
+                        segundos
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Reloj de arena 
+
+            <div class="hourglass" aria-hidden="true">
+                <div class="hourglass-sand"></div>
+            </div>
+             -->
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     ITINERARIO
+====================================================== -->
+
+<section class="section itinerary-section reveal">
+
+    <div class="section-inner">
+
+
+        <h2 class="section-title">
+            Itinerario
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="section-subtitle" id="itinerarySubtitle">
+            Cada momento nos llevará un poquito más cerca
+            de una noche inolvidable.
+        </p>
+
+
+        <div class="itinerary-map">
+
+
+            <!-- =================================================
+                 CAMINO CURVO
+            ================================================== -->
+
+            <div class="itinerary-path" aria-hidden="true">
+
+                <svg
+                    viewBox="0 0 850 1050"
+                    preserveAspectRatio="none"
+                >
+
+                    <path
+                        class="itinerary-path-glow"
+                        d="
+                            M425 45
+                            C250 90, 180 100, 190 170
+                            C200 240, 650 260, 660 340
+                            C670 420, 210 430, 190 510
+                            C170 590, 640 610, 660 690
+                            C680 770, 250 790, 190 860
+                            C160 895, 300 930, 425 970
+                        "
+                    />
+
+                    <path
+                        class="itinerary-path-main"
+                        d="
+                            M425 45
+                            C250 90, 180 100, 190 170
+                            C200 240, 650 260, 660 340
+                            C670 420, 210 430, 190 510
+                            C170 590, 640 610, 660 690
+                            C680 770, 250 790, 190 860
+                            C160 895, 300 930, 425 970
+                        "
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 01 · RECEPCIÓN
+            ================================================== -->
+
+            <article class="itinerary-event left">
+
+                <span class="itinerary-number">
+                    01
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Copas -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M6 3v7a3 3 0 0 0 6 0V3"/>
+                            <path d="M6 3h6"/>
+                            <path d="M9 13v6"/>
+                            <path d="M6 21h6"/>
+
+                            <path d="M15 5v5a3 3 0 0 0 6 0V5"/>
+                            <path d="M15 5h6"/>
+                            <path d="M18 13v6"/>
+                            <path d="M15 21h6"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            19:00
+                        </div>
+
+                        <div class="itinerary-name">
+                            Recepción
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 02 · JUEGOS
+            ================================================== -->
+
+            <article class="itinerary-event right">
+
+                <span class="itinerary-number">
+                    02
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Estrellas / juego -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/>
+
+                            <path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            19:30
+                        </div>
+
+                        <div class="itinerary-name">
+                            Juegos interactivos
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 03 · COMIDA
+            ================================================== -->
+
+            <article class="itinerary-event left">
+
+                <span class="itinerary-number">
+                    03
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Plato -->
+                        <svg viewBox="0 0 24 24">
+
+                            <circle cx="12" cy="12" r="7"/>
+
+                            <path d="M12 5a7 7 0 0 1 7 7"/>
+
+                            <path d="M4 4v7"/>
+                            <path d="M2.5 4v4"/>
+                            <path d="M5.5 4v4"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            20:30
+                        </div>
+
+                        <div class="itinerary-name">
+                            Comida
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 04 · ENTRADA
+            ================================================== -->
+
+            <article class="itinerary-event right">
+
+                <span class="itinerary-number">
+                    04
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Puerta -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M5 21V5l12-2v18"/>
+                            <path d="M17 21h3"/>
+                            <path d="M9 12h.01"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            21:30
+                        </div>
+
+                        <div class="itinerary-name">
+                            Entrada
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 05 · FOTOS
+            ================================================== -->
+
+            <article class="itinerary-event left">
+
+                <span class="itinerary-number">
+                    05
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Cámara -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M4 7h4l2-2h4l2 2h4v12H4Z"/>
+
+                            <circle cx="12" cy="13" r="3.5"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            22:00
+                        </div>
+
+                        <div class="itinerary-name">
+                            Tiempo de fotos
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 06 · BAILE
+            ================================================== -->
+
+            <article class="itinerary-event right">
+
+                <span class="itinerary-number">
+                    06
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Música -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M9 18V5l10-2v13"/>
+
+                            <circle cx="6" cy="18" r="3"/>
+                            <circle cx="16" cy="16" r="3"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            22:30
+                        </div>
+
+                        <div class="itinerary-name">
+                            Baile sorpresa
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 07 · HORA LOCA
+            ================================================== -->
+
+            <article class="itinerary-event left">
+
+                <span class="itinerary-number">
+                    07
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Máscara / celebración -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M4 8c3-2 13-2 16 0l-1 7c-4 3-10 3-14 0Z"/>
+
+                            <circle cx="9" cy="11" r="1"/>
+                            <circle cx="15" cy="11" r="1"/>
+
+                            <path d="M10 14h4"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            22:45
+                        </div>
+
+                        <div class="itinerary-name">
+                            Hora loca
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 08 · BRINDIS Y MARIACHI
+            ================================================== -->
+
+            <article class="itinerary-event right">
+
+                <span class="itinerary-number">
+                    08
+                </span>
+
+                <span class="itinerary-dot"></span>
+
+                <div class="itinerary-card">
+
+                    <div class="itinerary-icon">
+
+                        <!-- Copa -->
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M5 4h14l-1 6a6 6 0 0 1-12 0Z"/>
+
+                            <path d="M12 16v5"/>
+                            <path d="M8 21h8"/>
+
+                            <path d="M8 7h8"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="itinerary-info">
+
+                        <div class="itinerary-time">
+                            00:00
+                        </div>
+
+                        <div class="itinerary-name">
+                            Brindis
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 FINAL DEL CAMINO
+            ================================================== -->
+
+            <div class="itinerary-finish">
+
+                <div class="itinerary-finish-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M12 21s-7-4.5-9-9.5C1.5 7.5 4 5 7 5c2 0 4 1.5 5 3 1-1.5 3-3 5-3 3 0 5.5 2.5 4 6.5C19 16.5 12 21 12 21Z"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="itinerary-finish-text">
+                    Y así continúa la celebración...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     UBICACIÓN
+====================================================== -->
+
+<section class="section location-section reveal">
+
+    <div class="section-inner">
+
+
+        <h2 class="section-title">
+            ¿Dónde nos encontramos?
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="section-subtitle" style="text-align:center;">
+            Sigue el camino 😉
+        </p>
+
+
+        <!-- =================================================
+             MAPA
+        ================================================== -->
+
+        <div class="location-map" id="locationMap">
+  
+            <div class="sparkles sparkles-envelope" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+            <!-- =================================================
+                 CAMINO ANIMADO
+            ================================================== -->
+
+            <div class="location-route" aria-hidden="true">
+
+                <svg
+                    viewBox="0 0 850 500"
+                    preserveAspectRatio="none"
+                >
+
+                   <!-- Glow -->
+
+<path
+    class="route-glow"
+    d="
+        M110 405
+        C155 445, 205 430, 235 385
+        C265 340, 225 295, 270 260
+        C315 225, 370 275, 400 315
+        C430 355, 470 345, 485 295
+        C500 245, 455 205, 490 165
+        C525 125, 585 170, 610 205
+        C635 240, 670 220, 675 180
+        C680 140, 650 105, 690 75
+        C715 57, 750 55, 722 60
+    "
+/>
+
+<!-- Camino -->
+
+<path
+    class="route-path"
+    d="
+        M110 405
+        C155 445, 205 430, 235 385
+        C265 340, 225 295, 270 260
+        C315 225, 370 275, 400 315
+        C430 355, 470 345, 485 295
+        C500 245, 455 205, 490 165
+        C525 125, 585 170, 610 205
+        C635 240, 670 220, 675 180
+        C680 140, 650 105, 690 75
+        C715 57, 750 55, 722 60
+    "
+/>
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 INICIO
+            ================================================== -->
+
+            <span class="map-start"></span>
+
+
+            <!-- =================================================
+                 DESTINO
+            ================================================== -->
+
+            <span class="map-destination-label">
+                Tu destino ㅤㅤㅤㅤ
+            </span>
+
+            <a
+                class="map-destination"
+                href="https://maps.app.goo.gl/bc3DdE3ZzcNASbMn8"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir ubicación en Google Maps"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="9"
+                        r="2.2"
+                    />
+
+                </svg>
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             INFORMACIÓN
+        ================================================== -->
+
+        <div class="location-info">
+
+            <div class="location-name">
+                La Merced
+            </div>
+
+            <a
+                class="location-button"
+                href="https://maps.app.goo.gl/bc3DdE3ZzcNASbMn8"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="9"
+                        r="2.2"
+                    />
+
+                </svg>
+
+                Abrir en Google Maps
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     GALERÍA · VIAJE POR LOS AÑOS
+====================================================== -->
+
+<section class="section gallery-section reveal">
+
+    <div class="section-inner">
+
+        <div class="section-kicker">
+            Un pequeño viaje en el tiempo
+        </div>
+
+        <h2 class="section-title">
+            Mis recuerdos
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <p class="gallery-intro">
+            Desde mis primeros años...
+        </p>
+
+
+        <!-- =================================================
+             TARJETAS
+        ================================================== -->
+
+        <div class="memory-gallery">
+
+
+            <!-- =============================================
+                 0 AÑOS
+            ============================================== -->
+
+            <article
+                class="memory-card"
+                tabindex="0"
+                role="button"
+                aria-label="Recuerdo de 0 años"
+            >
+
+                <div class="memory-card-inner">
+
+
+                    <!-- FRENTE -->
+
+                    <div class="memory-card-front">
+
+                        <img
+                            class="memory-photo" 
+                            src="https://drive.google.com/thumbnail?id=1p8o25ZE50oXk6RX3ifC_ACvbXJEaT6U4&sz=w800"
+                            alt="Foto de bebé"
+                        >
+
+                        <div class="memory-front-content">
+
+                            <div class="memory-age">
+                                0 años
+                            </div>
+
+                            <div class="memory-title">
+                                El comienzo
+                            </div>
+
+                            <div class="memory-hint">
+                                Toca para descubrir el recuerdo
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ATRÁS -->
+
+                    <div class="memory-card-back">
+
+                        <div>
+
+                            <div class="memory-back-ornament">
+                                ✦
+                            </div>
+
+                            <div class="memory-back-age">
+                                El comienzo
+                            </div>
+
+                            <div class="memory-story">
+                                No recuerdo mi época de recién nacida, pero mis 
+                                papás dicen que no paraba de llorar. Claramente, 
+                                algunas cosas nunca cambian 
+                            </div>
+
+                            <div class="memory-back-hint">
+                                Toca para volver
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =============================================
+                 5 AÑOS
+            ============================================== -->
+
+            <article
+                class="memory-card"
+                tabindex="0"
+                role="button"
+                aria-label="Recuerdo de 5 años"
+            >
+
+                <div class="memory-card-inner">
+
+
+                    <!-- FRENTE -->
+
+                    <div class="memory-card-front">
+
+                        <img
+                            class="memory-photo" 
+                            src="https://drive.google.com/thumbnail?id=142mgPxm38ZNTLlSV6KQcC4XfCX6r8jxv&sz=w800"
+                            alt="Foto de los 5 años"
+                        >
+
+                        <div class="memory-front-content">
+
+                            <div class="memory-age">
+                                5 años
+                            </div>
+
+                            <div class="memory-title">
+                                El auge
+                            </div>
+
+                            <div class="memory-hint">
+                                Toca para descubrir el recuerdo
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ATRÁS -->
+
+                    <div class="memory-card-back">
+
+                        <div>
+
+                            <div class="memory-back-ornament">
+                                ✦
+                            </div>
+
+                            <div class="memory-back-age">
+                                5 años
+                            </div>
+
+                            <div class="memory-story">
+                                Aunque mi estilo para vestir era pésimo y 
+                                el de mis papás era todavía peor, en las 
+                                fotos siempre salía con una gran sonrisa.
+                            </div>
+
+                            <div class="memory-back-hint">
+                                Toca para volver
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =============================================
+                 10 AÑOS
+            ============================================== -->
+
+            <article
+                class="memory-card"
+                tabindex="0"
+                role="button"
+                aria-label="Recuerdo de 10 años"
+            >
+
+                <div class="memory-card-inner">
+
+
+                    <!-- FRENTE -->
+
+                    <div class="memory-card-front">
+
+                        <img
+                            class="memory-photo"
+                            src="https://drive.google.com/thumbnail?id=1TW--GVzW4hqJ2IE2ynLjLI093E17GAgg&sz=w800"
+                            alt="Foto de los 10 años"
+                        >
+
+                        <div class="memory-front-content">
+
+                            <div class="memory-age">
+                                10 años
+                            </div>
+
+                            <div class="memory-title">
+                                La caída
+                            </div>
+
+                            <div class="memory-hint">
+                                Toca para descubrir el recuerdo
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ATRÁS -->
+
+                    <div class="memory-card-back">
+
+                        <div>
+
+                            <div class="memory-back-ornament">
+                                ✦
+                            </div>
+
+                            <div class="memory-back-age">
+                                10 años
+                            </div>
+
+                            <div class="memory-story">
+                                Las cosas no siempre salían como yo quería,
+                                 pero rendirse nunca fue una opción, siempre
+                                  encontraba la manera de seguir adelante.
+                            </div>
+
+                            <div class="memory-back-hint">
+                                Toca para volver
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =============================================
+                 15 AÑOS · MISTERIO
+            ============================================== -->
+
+            <article
+                class="memory-card mystery"
+                tabindex="0"
+                role="button"
+                aria-label="Descubre el recuerdo de los 15 años"
+            >
+
+                <div class="memory-card-inner">
+
+
+                    <!-- FRENTE -->
+
+                    <div class="memory-card-front">
+
+                        <div class="mystery-question">
+                            ?
+                        </div>
+
+                        <div class="mystery-title">
+                            15 años
+                        </div>
+
+                        <div class="mystery-subtitle">
+                            Lo descubriremos juntos...
+                        </div>
+
+                    </div>
+
+
+                    <!-- ATRÁS -->
+
+                    <div class="memory-card-back">
+
+                        <div>
+
+                            <div class="memory-back-ornament">
+                                ✦
+                            </div>
+
+                            <div class="memory-back-age">
+                                El gran momento
+                            </div>
+
+                            <div class="memory-story">
+                                Esta historia todavía está
+                                escribiéndose... y quiero
+                                descubrirla junto a las personas
+                                que hacen especial este día.
+                            </div>
+
+                            <div class="memory-back-hint">
+                                Este recuerdo comienza hoy
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="gallery-touch-hint">
+            ✦ Toca cada recuerdo para descubrir su historia ✦
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     RSVP
+====================================================== -->
+
+<section class="section rsvp-section reveal">
+
+    <div class="section-inner">
+
+        <div class="section-kicker">
+            Un último detalle
+        </div>
+
+        <h2 class="section-title">
+            Confirma tu asistencia
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <div class="rsvp-card">
+
+
+            <!-- Sobre decorativo -->
+
+            <div
+                class="rsvp-envelope"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Mensaje -->
+
+            <div class="rsvp-message">
+
+                Tu presencia hará que este recuerdo
+                sea todavía más especial.
+
+                <br>
+
+                <em>
+                    ¿Nos acompañas?
+                </em>
+
+            </div>
+
+
+            <div class="rsvp-description">
+
+                Ayúdame confirmando tu asistencia.
+                Así podremos preparar todo con mucho
+                cariño para compartir esta noche contigo.
+
+            </div>
+
+
+            <!-- Botones -->
+
+            <div class="rsvp-actions">
+
+
+                <!-- SÍ -->
+
+                <a
+                    class="rsvp-button primary"
+                    href="https://wa.me/+59168555309?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M20 6 9 17l-5-5"
+                        />
+
+                    </svg>
+
+                    Sí, estaré ahí
+
+                </a>
+
+
+                <!-- NO -->
+
+                <a
+                    class="rsvp-button secondary"
+                    href="https://wa.me/+59168555309?text=Hola%2C%20lamentablemente%20no%20podre%20asistir%20a%20los%20XV"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="m6 6 12 12"
+                        />
+
+                        <path
+                            d="m18 6-12 12"
+                        />
+
+                    </svg>
+
+                    No podré asistir
+
+                </a>
+
+            </div>
+
+
+            <div class="rsvp-note">
+                Gracias por ser parte de este día ✦
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================================
+     Regalo
+====================================================== -->
+<section class="section gift-section reveal">
+    <div class="section-inner">
+
+        <div class="section-kicker">Muestras de cariño</div>
+
+        <h2 class="section-title">¿Un regalo?</h2>
+
+        <div class="section-line"></div>
+
+        <div class="gift-card">
+
+            <div class="gift-icon" aria-hidden="true">
+                ♡
+            </div>
+
+            <p class="gift-message">
+                Cualquier muestra de cariño será recibida con el corazón. 
+                <br>
+                <em>Si deseas hacernos un presente, puedes apoyarnos a través de este código.</em>
+            </p>
+
+            <div class="qr-wrapper">
+                <img
+                    src="https://drive.google.com/thumbnail?id=1OAQcI_DQBIMpOxm9ouIAR7xwbP0S5FRO&sz=w800"
+                    alt="Código QR para realizar un regalo"
+                >
+            </div>
+
+            <p class="qr-label">
+                Escanea el código QR
+            </p>
+
+            <p class="gift-note">
+                Tu detalle será recibido con mucho cariño. ✦
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="site-footer">
+    <div class="footer-line"></div>
+
+    <p class="footer-text">
+        MIS XV - ARLETH
+    </p>
+
+    <a href="#" class="footer-brand">
+        by fabri_14
+    </a>
+
+</footer>
+
+<!-- ==========================================
+     MÚSICA
+=========================================== -->
+
+<audio id="music" loop>
+
+
+    <source
+   
+        src="audio.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()"
+>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.893-.982-.336.075-.668-.135-.745-.47-.076-.337.135-.668.47-.745 3.856-.88 7.15-.51 9.822 1.128.296.18.387.563.206.862zm1.226-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.868-2.156-10.074-1.184-.412.125-.845-.107-.97-.52-.124-.412.108-.845.52-.97 3.666-1.112 8.233-.574 11.338 1.334.367.226.488.707.26 1.074zm.105-2.833C14.428 8.762 8.636 8.57 5.29 9.584c-.513.156-1.05-.133-1.206-.646-.156-.513.133-1.05.646-1.207 3.844-1.167 10.237-.947 14.28 1.454.462.274.613.873.34 1.334-.274.463-.873.614-1.334.34z"/>
+    </svg>
+</button>
+
+<script>
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+const envelopeScreen =
+    document.getElementById("envelopeScreen");
+
+const envelopeButton =
+    document.getElementById("envelopeButton");
+const coverSun =
+    document.getElementById("cover-sun");
+
+
+envelopeButton.addEventListener(
+    "click",
+    () => {
+
+        envelopeScreen.classList.add("opening");
+
+
+        setTimeout(
+            () => {
+
+                envelopeScreen.classList.add("hidden");
+                coverSun.classList.add("up");
+                document.body.style.overflow = "auto";
+
+            },
+            2200
+        );
+
+    }
+);
+
+
+/* bloquear scroll mientras está el sobre */
+
+document.body.style.overflow = "hidden";
+
+
+/* =========================================================
+   COUNTDOWN · 20 DE NOVIEMBRE DE 2026
+========================================================= */
+
+const targetDate = new Date("2026-11-20T00:00:00").getTime();
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
+
+    if (difference <= 0) {
+
+        daysElement.textContent = "00";
+        hoursElement.textContent = "00";
+        minutesElement.textContent = "00";
+        secondsElement.textContent = "00";
+
+        return;
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+
+    daysElement.textContent =
+        String(days).padStart(2, "0");
+
+    hoursElement.textContent =
+        String(hours).padStart(2, "0");
+
+    minutesElement.textContent =
+        String(minutes).padStart(2, "0");
+
+    secondsElement.textContent =
+        String(seconds).padStart(2, "0");
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(
+                (entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+revealElements.forEach(
+    (element) => {
+
+        observer.observe(element);
+
+    }
+);
+
+/* =========================================================
+   UBICACIÓN · ANIMAR CAMINO AL LLEGAR A LA SECCIÓN
+========================================================= */
+
+const locationMap = document.getElementById("locationMap");
+
+if (locationMap) {
+
+    const locationObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    locationMap.classList.add("location-active");
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.35
+        }
+    );
+
+    locationObserver.observe(locationMap);
+}
+
+/* =========================================================
+   GALERÍA · TARJETAS INTERACTIVAS
+========================================================= */
+
+const memoryCards =
+    document.querySelectorAll(".memory-card");
+
+memoryCards.forEach(card => {
+
+    function flipCard() {
+
+        card.classList.toggle("flipped");
+
+    }
+
+
+    /* Click / toque */
+
+    card.addEventListener("click", flipCard);
+
+
+    /* Teclado */
+
+    card.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            flipCard();
+
+        }
+
+    });
+
+});
+
+    /* ==========================================
+       MÚSICA
+    ========================================== */
+
+    const music =
+        document.getElementById("music");
+
+    const musicButton =
+        document.getElementById("musicButton");
+
+
+    function toggleMusic() {
+
+        if (music.paused) {
+
+            music.play();
+            musicButton.style.border = "1px solid rgba(255, 255, 255, .4)";
+            musicButton.innerHTML = "❚❚";
+            
+
+        } else {
+
+            music.pause();
+
+            musicButton.innerHTML = `   <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.893-.982-.336.075-.668-.135-.745-.47-.076-.337.135-.668.47-.745 3.856-.88 7.15-.51 9.822 1.128.296.18.387.563.206.862zm1.226-2.723c-.226.367-.707.487-1.074.26-2.72-1.672-6.868-2.156-10.074-1.184-.412.125-.845-.107-.97-.52-.124-.412.108-.845.52-.97 3.666-1.112 8.233-.574 11.338 1.334.367.226.488.707.26 1.074zm.105-2.833C14.428 8.762 8.636 8.57 5.29 9.584c-.513.156-1.05-.133-1.206-.646-.156-.513.133-1.05.646-1.207 3.844-1.167 10.237-.947 14.28 1.454.462.274.613.873.34 1.334-.274.463-.873.614-1.334.34z"/>
+            </svg>`;
+            musicButton.style.border = "none";
+
+        }
+
+    }
+
+    /* =========================================================
+   MARIPOSAS · RASTRO DE ESTRELLITAS
+========================================================= */
+
+const butterflies = document.querySelectorAll(
+    ".butterfly-gold, .butterfly-blue"
+);
+
+
+function createButterflyTrail(butterfly) {
+
+    const rect = butterfly.getBoundingClientRect();
+
+    if (
+        rect.bottom < 0 ||
+        rect.top > window.innerHeight ||
+        rect.right < 0 ||
+        rect.left > window.innerWidth
+    ) {
+        return;
+    }
+
+
+    const star = document.createElement("span");
+
+    star.className = "butterfly-trail-star";
+
+
+    /* Mariposa azul = estrellas azules */
+    if (
+        butterfly.classList.contains("butterfly-blue")
+    ) {
+        star.classList.add("blue");
+    }
+
+
+    /* Diferentes formas de estrella */
+    const shapes = [
+        "✦",
+        "✧",
+        "⋆",
+        "✦",
+        "·"
+    ];
+
+    star.textContent =
+        shapes[
+            Math.floor(
+                Math.random() * shapes.length
+            )
+        ];
+
+
+    /*
+       La estrella aparece ligeramente
+       detrás de la mariposa.
+    */
+
+    const offsetX =
+        (Math.random() - .5) * rect.width * .55;
+
+    const offsetY =
+        (Math.random() - .5) * rect.height * .45;
+
+
+    star.style.left =
+        `${rect.left + rect.width / 2 + offsetX}px`;
+
+    star.style.top =
+        `${rect.top + rect.height / 2 + offsetY}px`;
+
+
+    /*
+       Cada estrella se mueve en una
+       dirección ligeramente diferente.
+    */
+
+    star.style.setProperty(
+        "--trail-x",
+        `${(Math.random() - .5) * 24}px`
+    );
+
+    star.style.setProperty(
+        "--trail-y",
+        `${8 + Math.random() * 24}px`
+    );
+
+
+    /*
+       Tamaños ligeramente diferentes
+       para que no parezcan copias.
+    */
+
+    star.style.fontSize =
+        `${5 + Math.random() * 7}px`;
+
+
+    /*
+       Pequeño retraso aleatorio.
+    */
+
+    star.style.animationDelay =
+        `${Math.random() * .12}s`;
+
+
+    document.body.appendChild(star);
+
+
+    /*
+       Eliminarla después de la animación.
+    */
+
+    setTimeout(() => {
+
+        star.remove();
+
+    }, 1400);
+
+}
+
+
+/*
+   Cada mariposa tiene su propio ritmo.
+*/
+
+setInterval(() => {
+
+    butterflies.forEach(butterfly => {
+
+        createButterflyTrail(butterfly);
+
+    });
+
+}, 220);
+
+/* =========================================================
+   BOTÓN DE MÚSICA · APARECE EN LA SEGUNDA SECCIÓN
+========================================================= */
+
+const introSection =
+    document.querySelector(".intro-section");
+
+
+if (introSection && musicButton) {
+
+    const musicButtonObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        musicButton.classList.add(
+                            "show"
+                        );
+
+                        musicButtonObserver.unobserve(
+                            introSection
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: .25
+            }
+        );
+
+
+    musicButtonObserver.observe(
+        introSection
+    );
+}
+
+</script>
+
+
+</body>
+</html>
